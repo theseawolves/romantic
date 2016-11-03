@@ -9,6 +9,7 @@ var env = process.env.NODE_ENV
 var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
 var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+var px2rem = require('postcss-px2rem')
 
 module.exports = {
   entry: {
@@ -72,7 +73,8 @@ module.exports = {
       // require('autoprefixer')({
       //   browsers: ['last 2 versions']
       // })
-      require('autoprefixer')()
+      require('autoprefixer')(),
+      // px2rem({remUnit: 75})
     ]
   }
 }

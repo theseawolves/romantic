@@ -57,7 +57,7 @@
                         <use xlink:href="#icon-bangongliangpin"></use>
                       </svg>
                     </div>
-                    <span class="title web-font">鞋子包包</span>
+                    <span class="title web-font">办公良品</span>
                   </a>
                   <a href="javascript:">
                     <div class="container">
@@ -193,6 +193,49 @@
 
             <div class="separate-line"></div>
 
+            <div id="gift-exhibit">
+              <template v-for = "item in exhibits">
+                <div class="exhibit-larger">
+                  <h1 class="issue-headline" v-text="item.headline"></h1>
+                  <div class="issue-subtitle">
+                    <p class="vux-divider">
+                      <span
+                        class="issue-subtitle-text"
+                       v-text="item.subtitleText"></span>
+                      <span
+                      class="issue-subtitle-date"
+                       v-text="item.subtitleDate"></span>
+                    </p>
+                  </div>
+                  <div class="issue-link">
+                    <div class="issue-link-body"
+                    :style="{'background-image':'url('+item.link+')'}">
+                    </div>
+                    <div>
+                      <div class="issue-link-title" v-text="item.title"></div>
+                      <div class="issue-link-price" v-text="'￥'+item.price"></div>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="exhibit-tiny">
+                  <swiper :options="giftExhibitOption">
+                    <swiper-slide v-for="tiny in item.tinyPictures" >
+                      <div class="issue-link">
+                        <div class="issue-link-body"
+                        :style="{'background-image':'url('+tiny.link+')'}">
+                        </div>
+                        <div>
+                          <div class="issue-link-title" v-text="tiny.title"></div>
+                          <div class="issue-link-price" v-text="'￥'+tiny.price"></div>
+                        </div>
+                      </div>
+                    </swiper-slide >
+                  </swiper>
+                </div>
+              </template>
+            </div>
+
 
 
           </mt-tab-container-item>
@@ -276,7 +319,13 @@ export default {
         slidesPerView: 5,
         spaceBetween: 0
       },
-      giftScenarioCategory: ['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚', '#结婚', '#红颜知己', '#蓝颜知己', '#办公室恋情', '#第三者']
+      giftScenarioCategory: ['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚', '#结婚', '#红颜知己', '#蓝颜知己', '#办公室恋情', '#第三者'],
+      exhibits: [],
+      baseUrl: '',
+      giftExhibitOption: {
+        slidesPerView: 3,
+        //spaceBetween: 18
+      },
     }
   },
   mounted () {
@@ -285,12 +334,18 @@ export default {
       console.log(response)
     }, (response) => {
       console.log(response)
-    });
+    })
     this.$http.get('/gifts').then((response) => {
       console.log(response)
     }, (response) => {
       console.log(response)
-    });
+    })
+    this.$http.get('/issues').then((response) => {
+      console.log(response.data)
+      this.exhibits = response.data
+    }, (response) => {
+      console.log(response)
+    })
   }
 }
 </script>
@@ -413,7 +468,7 @@ exhibit
   overflow: hidden;
   line-height: 1;
   text-align: center;
-  padding: 10px 0;
+  //padding: 10px 0;
   color: #666;
 }
 .vux-divider:after,.vux-divider:before {
@@ -432,6 +487,63 @@ exhibit
   background-position: left 1em top 50%
 }
 
+.issue-headline {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+  color: #000000;
+}
+.issue-subtitle {
+  font-size: 14px;
+}
+.issue-subtitle-text {
+  color: #ddb63f;
+  margin-right: 14px;
+}
+.issue-subtitle-date {
+  color: #928d85;
+}
+
+.issue-link-body {
+  background-repeat: no-repeat;
+  background-color: #000;
+  background-position: 50%;
+}
+
+.exhibit-larger .issue-link-body {
+  height: 230px;
+  margin: 7px 7px 14px;
+  border: 1px solid #dededf;
+}
+.exhibit-tiny .issue-link-body {
+  height: 98px;
+  margin: 7px 7px 12px;
+}
+
+.issue-link-title {
+  float: left;
+  margin-bottom: 10px;
+}
+.issue-link-price {
+  float: right;
+  color: #f66375;
+}
+
+
+
+.exhibit-tiny {
+  font-size: 12px;
+}
+.issue-link-title {
+  margin-left: 11px;
+}
+
+.issue-link-price {
+  margin-right: 11px;
+}
+#gift-exhibit:last-child {
+  margin-bottom: 65px;
+}
 /**
 footer
 **/
