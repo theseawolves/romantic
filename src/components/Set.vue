@@ -7,168 +7,20 @@
       <mt-tab-container-item id="gift-set">
         <div id="gift-category">
           <swiper :options="giftCategoryOption">
-            <swiper-slide >
-              <a href="javascript:">
+            <swiper-slide v-for="item in categories">
+                <router-link  v-for = "category in item"
+                :to="{ path:'/details', query:{ tag: category.name} }"
+                exact>
                 <div class="container">
                   <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-quanbu"></use>
+                    <use :xlink:href = "'#'+category.name"></use>
                   </svg>
                 </div>
-                <span class="title web-font">全部</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-shishangpeishi1"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">时尚配饰</span>
-              </a>
+                <span class="title" v-text = "category.title"></span>
+              </router-link>
+
             </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-liyuxianhua"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">礼遇鲜花</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-qiaokeli"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">巧克力</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-bangongliangpin"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">办公良品</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-yizhuoliangpin"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">衣着良品</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-gongzibaozhen"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">公仔抱枕</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-weijinshoutao"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">围巾手套</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-xiangshuixiangxun"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">香水香熏</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-shumajixie"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">数码机械</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-jiajuliangpin"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">家居良品</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-bangongliangpin"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">办公良品</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-meihujianshen"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">美护健身</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-dongmanjifu"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">动漫基腐</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-chanshiguanqu"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">铲屎官区</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-wenjuqiapian"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">文具卡片</span>
-              </a>
-            </swiper-slide>
-            <swiper-slide >
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-xinyihezi"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">心意盒子</span>
-              </a>
-              <a href="javascript:">
-                <div class="container">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-shishangpeishi1"></use>
-                  </svg>
-                </div>
-                <span class="title web-font">时尚配饰</span>
-              </a>
-            </swiper-slide>
+
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
 
@@ -181,8 +33,6 @@
             <swiper-slide v-for="item in giftScenarioCategory" >
               <router-link :to="{ path:'/details', query:{ tag: item} }" exact v-text="item">
               </router-link>
-              <!-- <a href="javascript:" v-text="item"></a> -->
-
             </swiper-slide >
           </swiper>
         </div>
@@ -204,7 +54,7 @@
                 </p>
               </div>
               <div class="issue-link">
-                <router-link to="/details" exact>
+                <router-link :to="{ path:'/details', query:{ issueId: item.issueId, type: 'larger', id: item.id} }" exact>
                   <div class="issue-link-body"
                   :style="{'background-image':'url('+item.link+')'}">
                 </div>
@@ -220,9 +70,11 @@
             <swiper :options="giftExhibitOption">
               <swiper-slide v-for="tiny in item.tinyPictures" >
                 <div class="issue-link">
-                  <div class="issue-link-body"
-                  :style="{'background-image':'url('+tiny.link+')'}">
-                </div>
+                  <router-link :to="{ path:'/details', query:{ issueId: item.issueId, type: 'tiny', id: item.id} }" exact>
+                      <div class="issue-link-body"
+                      :style="{'background-image':'url('+tiny.link+')'}">
+                    </div>
+                  </router-link>
                 <div>
                   <div class="issue-link-title" v-text="tiny.title"></div>
                   <div class="issue-link-price" v-text="'￥'+tiny.price"></div>
@@ -260,6 +112,44 @@ export default {
   data () {
     return {
       selected: 'gift-set',
+      categories:[
+        [
+          { name: 'icon-quanbu', title: '全部'},
+          { name: 'icon-shishangpeishi', title: '时尚配饰'}
+        ],
+        [
+          { name: 'icon-liyuxianhua', title: '礼遇鲜花'},
+          { name: 'icon-qiaokeli', title: '巧克力'}
+        ],
+        [
+          { name: 'icon-bangongliangpin', title: '办公良品'},
+          { name: 'icon-yizhuoliangpin', title: '衣着良品'}
+        ],
+        [
+          { name: 'icon-gongzibaozhen', title: '公仔抱枕'},
+          { name: 'icon-weijinshoutao', title: '围巾手套'}
+        ],
+        [
+          { name: 'icon-xiangshuixiangxun', title: '香水香熏'},
+          { name: 'icon-shumajixie', title: '数码机械'}
+        ],
+        [
+          { name: 'icon-jiajuliangpin', title: '家具良品'},
+          { name: 'icon-bangongliangpin', title: '办公良品'}
+        ],
+        [
+          { name: 'icon-meihujianshen', title: '美护健身'},
+          { name: 'icon-dongmanjifu', title: '动漫基腐'}
+        ],
+        [
+          { name: 'icon-chanshiguanqu', title: '铲屎官区'},
+          { name: 'icon-wenjuqiapian', title: '文具卡片'}
+        ],
+        [
+          { name: 'icon-xinyihezi', title: '心意盒子'}
+        ],
+
+      ],
       giftCategoryOption: {
         pagination: '.swiper-pagination',
         slidesPerView: 5,

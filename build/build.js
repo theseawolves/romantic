@@ -18,9 +18,19 @@ var spinner = ora('building for production...')
 spinner.start()
 
 var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+var docsPath = path.join(config.build.assetsRoot, 'docs')
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
+mkdir('-p', docsPath)
 cp('-R', 'static/*', assetsPath)
+cp('-R', 'docs/*', docsPath)
+
+//copy src
+//cp('-R', '/*', path.join(assetsPath,'front-src'))
+// console.log( find('-A',path.resolve(__dirname,'../').filter(function(file){
+//   return file.match(/^(?!node_modules)/)
+// }) ))
+// console.log(path.join(config.build.assetsRoot,'../front-src'))
 
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()

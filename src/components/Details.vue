@@ -1,6 +1,5 @@
 <template>
   <div class="">
-
     <mt-cell v-for="n in 7" :title="'礼物详情页 ' + n" />
   </div>
 </template>
@@ -12,8 +11,10 @@ import 'mint-ui/lib/style.css'
 
 Vue.use(Mint)
 export default {
+  name: 'details',
   data: function () {
     return {
+      msg: 'hello world'
     }
   }
 }

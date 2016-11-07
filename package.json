@@ -1,8 +1,8 @@
 {
-  "name": "romantic",
+  "name": "lmsg",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "theseawolves <theseawolves@yeah.net>",
+  "author": "Quay",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js & node build/dev-server-mock.js",
