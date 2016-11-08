@@ -112,6 +112,7 @@ export default {
   data () {
     return {
       selected: 'gift-set',
+      baseUrl: 'http://romanski.ic60x.com/bg',
       categories:[
         [
           { name: 'icon-quanbu', title: '全部'},
@@ -162,26 +163,20 @@ export default {
       },
       giftScenarioCategory: ['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚', '#结婚', '#红颜知己', '#蓝颜知己', '#办公室恋情', '#第三者'],
       exhibits: [],
-      baseUrl: '',
       giftExhibitOption: {
         slidesPerView: 3,
         //spaceBetween: 18
       },
     }
   },
+  computed: {
+    url () {
+      return window.location.href.indexOf('localhost') > -1
+                ? '' : this.baseUrl
+    }    
+  },
   mounted () {
-    // GET /someUrl
-    this.$http.get('/list').then((response) => {
-      console.log(response)
-    }, (response) => {
-      console.log(response)
-    })
-    this.$http.get('/gifts').then((response) => {
-      console.log(response)
-    }, (response) => {
-      console.log(response)
-    })
-    this.$http.get('/issues').then((response) => {
+    this.$http.post( this.url + '/issues').then((response) => {
       console.log(response.data)
       this.exhibits = response.data
     }, (response) => {

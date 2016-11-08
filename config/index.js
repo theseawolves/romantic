@@ -9,7 +9,7 @@ module.exports = {
     index: path.resolve(__dirname, '../../lmsg/front/index.html'),
     assetsRoot: path.resolve(__dirname, '../../lmsg/front'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/front',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -24,23 +24,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/list': {
+
+      '/issues': {
         target: 'http://localhost:8888',
         changeOrigin: true,
         pathRewrite: {
-          '^/list': '/list'
+          '^/issues': '/issues'
         }
-      },
-      '/gifts': {
-        target: 'http://localhost:8888',
-        changeOrigin: true,
-        // pathRewrite: {
-        //   '^/list': '/list'
-        // }
-      },
-      '/issues': {
-        target: 'http://localhost:8888',
-        changeOrigin: true
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

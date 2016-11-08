@@ -7,14 +7,14 @@ mock data
 **/
 app.use('/static', express.static(path.join(__dirname, '../public')))
 
-app.get('/list',function(req, res) {
-  res.json({ user: 'tobi'})
-})
-
-app.get('/gifts',function(req, res) {
-  res.json({ gifts: 'gifts'})
-})
-app.get('/issues',function(req, res) {
+// app.get('/list',function(req, res) {
+//   res.json({ user: 'tobi'})
+// })
+//
+// app.get('/gifts',function(req, res) {
+//   res.json({ gifts: 'gifts'})
+// })
+app.post('/issues',function(req, res) {
   res.json([
     {
       issueId:1,
