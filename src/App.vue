@@ -18,6 +18,7 @@
 import Vue from 'vue'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
+// import './assets/fonts/iconfont.js'
 
 Vue.use(Mint)
 // Vue.component(Cell.name, Cell)
