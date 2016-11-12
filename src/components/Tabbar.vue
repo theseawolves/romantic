@@ -1,29 +1,11 @@
 <template>
-  <mt-tabbar v-model="selected" fixed>
-    <mt-tab-item id="home">
-      <span slot="icon" class="iconfont icon-shouye">
+  <mt-tabbar v-model="selected2" fixed>
+    <mt-tab-item v-for="item in items" :id="item.id"
+    @click.native="handleClick">
+      <span slot="icon" class="iconfont" :class="item.name">
       </span>
-       <span>首页</span>
-    </mt-tab-item>
-    <mt-tab-item id="gift-set">
-      <span slot="icon" class="iconfont icon-liwu">
-      </span>
-      <span>礼物</span>
-    </mt-tab-item>
-    <mt-tab-item id="add">
-      <span slot="icon" class="iconfont icon-fabu">
-      </span>
-    </mt-tab-item>
-    <mt-tab-item id="message">
-      <span slot="icon" class="iconfont icon-xiaoxi">
-      </span>
-      <span>消息</span>
-    </mt-tab-item>
-    <mt-tab-item id="me">
-      <span slot="icon" class="iconfont icon-wode">
-      </span>
-      <span>我的</span>
-    </mt-tab-item>
+      <span v-text="item.title"></span>
+    </mint-tab-item>
   </mt-tabbar>
 </template>
 
@@ -32,10 +14,33 @@ export default {
   props:['selected'],
   data: function () {
     return {
+      selected2: '',
+      items:[
+        { id: 'home', name: 'icon-shouye', title: '首页'},
+        { id: 'gift', name: 'icon-liwu', title: '礼物'},
+        { id: 'add', name: 'icon-fabu', title: ''},
+        { id: 'message', name: 'icon-xiaoxi', title: '消息'},
+        { id: 'me', name: 'icon-wode', title: '我的'}
+      ]
+    }
+  },
+  mounted () {
+    this.selected2 = this.selected
+  },
+  methods: {
+    handleClick () {
+      this.$router.push({name:this.selected2})
     }
   }
 }
 </script>
 
 <style lang="css">
+#app .mint-tabbar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
 </style>

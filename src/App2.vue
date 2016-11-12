@@ -2,9 +2,9 @@
   <div id="app">
     <div class="page-tabbar">
       <div class="page-wrap">
-        <router-view></router-view>
-        <!-- <transition name="fade" mode="out-in">
-        </transition> -->
+        <transition name="fade" mode="out-in">
+          <router-view class="view"></router-view>
+        </transition>
       </div>
     </div>
   </div>
@@ -15,7 +15,6 @@ import Vue from 'vue'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './assets/fonts/iconfont.js?strict=false'
-import './assets/fonts/iconfont.css'
 
 Vue.use(Mint)
 // Vue.component(Cell.name, Cell)
@@ -26,10 +25,10 @@ Vue.use(Mint)
 // Vue.component(TabItem.name, TabItem)
 
 export default {
-  name: 'app',
+  name: '',
   data () {
     return {
-      // selected: 'gift-set'
+      selected: 'gift-set'
     }
   },
   mounted () {
@@ -39,13 +38,6 @@ export default {
 </script>
 
 <style >
-
-
-html, body {
-  background-color: #fafafa;
-  -webkit-overflow-scrolling: touch;
-  user-select: none;
-}
 
 .fade-enter-active, .fade-leave-active {
   transition: all .2s ease
@@ -71,8 +63,7 @@ html, body {
 
 
 .icon {
-   width: 1em;
-   height: 1em;
+   width: 1em; height: 1em;
    vertical-align: -0.15em;
    fill: currentColor;
    overflow: hidden;
@@ -84,10 +75,10 @@ body {
 
 #app {
   font-family:"webfont" !important;
-  //font-size:16px;/*px*/
+  font-size:16px;
   font-style:normal;
   -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;/*px*/
+  -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -97,54 +88,43 @@ header
 
 #app .mint-header {
   background-color: #ddb63f;
-  height: 80px;
+  height: 1.1666666666667rem;
 }
 
 #app .mint-header-title {
-  font-size: 36px;/*px*/
+  font-size: 0.46666666666667rem;
   font-weight: normal;
-}
-
-#app .mint-header .mint-button {
-  margin-right: 40px;
-}
-
-#app .mint-header .mintui {
-  font-size: 40px;/*px*/
 }
 
 /**
 礼物分类
 **/
 
-#gift-category .swiper-container {
-  height: 452px;
-}
-#gift-category .swiper-slide {
+.swiper-slide {
     text-align: center;
-    height:362px;
+}
+
+.swiper-slide > a {
+  display: block;
+  text-decoration: none;
+  font-size: .32rem;
+  color: #ddb63f;
 }
 
 #gift-category .swiper-slide > a {
-  display: block;
-  text-decoration: none;
-  font-size: 24px;/*px*/
-  color: #000;
+  margin-top: .293333rem;
 }
 
-#gift-category .swiper-slide>a:first-child {
-  margin-top: 48px;
+#gift-scenario-category .swiper-slide > a {
+  padding-top: 0.33333333333333rem;
+  padding-bottom:  0.33333333333333rem;
+
 }
 
-#gift-category .swiper-slide>a:nth-child(2) {
-  margin-top: 66px;
-}
-
-#gift-category .swiper-slide > a > .container {
+.swiper-slide > a > .container {
   display: inline-block;
-  width: 70px;
-  height: 70px;
-  margin-bottom: 18px;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 #gift-category .swiper-slide  svg {
   width: 100%;
@@ -153,43 +133,22 @@ header
 
 #gift-category .swiper-slide  .title {
   display: block;
-  font-size: 24px;/*px*/
+  font-size: .32rem;
   color: #000;
 }
 
-#gift-category .swiper-pagination-bullet {
-  width: 20px;
-  height: 20px;
-}
-#gift-category .swiper-container-horizontal > .swiper-pagination-bullets {
-    bottom: 32px;
+#app .swiper-pagination-bullet-active {
+  background: #ddb63f;
 }
 
-#gift-category .swiper-pagination-bullet-active {
-  background: #ddb63f;
+#gift-category .swiper-container {
+  height: 180px;
 }
 
 .separate-line {
   width: 100%;
-  height: 10px;
+  height: 6px;
   background-color: #F5F5F5;
-}
-
-#gift-scenario-category .swiper-slide > a {
-  padding-top: 0;
-  padding-bottom:  0;
-}
-
-#gift-scenario-category .swiper-slide > a {
-  display: block;
-  text-decoration: none;
-  font-size: 22px;/*px*/
-  color: #ddb63f;
-  line-height: 66px;
-}
-#gift-scenario-category .swiper-slide {
-    text-align: center;
-    height: 66px;
 }
 
 /**
@@ -203,8 +162,8 @@ exhibit
   overflow: hidden;
   line-height: 1;
   text-align: center;
-  color: #acacac;
-  margin-bottom: 16px;
+  //padding: 10px 0;
+  color: #666;
 }
 .vux-divider:after,.vux-divider:before {
   content: '';
@@ -223,100 +182,97 @@ exhibit
 }
 
 .issue-headline {
-  margin-top: 34px;
-  margin-bottom: 24px;
+  margin-top: 15px;
   text-align: center;
-  font-size: 28px;/*px*/
-  color: #000;
-  font-weight: normal;
+  font-size: 16px;
+  color: #000000;
 }
 .issue-subtitle {
-  font-size: 18px;/*px*/
+  font-size: 14px;
 }
 .issue-subtitle-text {
   color: #ddb63f;
-  margin-right: 18px;
+  margin-right: 14px;
 }
 .issue-subtitle-date {
-  color: #acacac;
+  color: #928d85;
 }
 
 .issue-link-body {
   background-repeat: no-repeat;
   background-color: #000;
   background-position: 50%;
-  background-size: cover;
 }
 
 .exhibit-larger .issue-link-body {
-  height: 480px;
-  margin: 0 16px 28px;
-  border: 1px solid #f5f5f5;
+  height: 230px;
+  margin: 7px 7px 14px;
+  border: 1px solid #dededf;
 }
 .exhibit-tiny .issue-link-body {
-  height: 202px;
-  margin: 28px 16px 28px;
-  border: 1px solid #f5f5f5;
+  height: 98px;
+  margin: 7px 7px 12px;
 }
 
 .issue-link-title {
   float: left;
-  font-size: 20px;/*px*/
+  margin-bottom: 10px;
 }
 .issue-link-price {
   float: right;
-  font-size: 20px;/*px*/
   color: #f66375;
 }
 
 
 
 .exhibit-tiny {
-  font-size: 20px;/*px*/
+  font-size: 12px;
 }
 .issue-link-title {
-  margin-left: 22px;
+  margin-left: 11px;
 }
 
 .issue-link-price {
-  margin-right: 22px;
+  margin-right: 11px;
 }
 #gift-exhibit:last-child {
-  margin-bottom: 110px;
+  margin-bottom: 65px;
 }
 /**
 footer
 **/
 
 #app .mint-tab-item-icon {
-    width: 45px;
-    height: 45px;
+    /*width: 47px;
+    height: 47px;*/
+    width: 0.66666666666667rem;
+    height: 0.66666666666667rem;
     margin: 0 auto 11px;
-}
-#app .mint-tab-item-icon .iconfont {
-  font-size: 45px;
 }
 
 #app .mint-tab-item:nth-of-type(3)>.mint-tab-item-icon {
-  width: 70px;
-  height: 70px;
+  /*width: 73px;
+  height: 73px;*/
+  width: 1.2222222222222rem;
+  height: 1.2222222222222rem;
   margin: 0 auto;
 }
 
 #app .mint-tabbar > .mint-tab-item.is-selected {
     background-color: #eaeaea;
     color: #ddb63f;
-    text-decoration: none;
 }
 
 #app .mint-tab-item-label {
     color: #6c6c6c;
-    font-size: 22px;/*px*/
+    /*font-size: 24px;*/
+    font-size: 0.33333333333333rem;
     line-height: 1;
 }
 
 #app .icon-fabu {
-  font-size: 70px;/*px*/
+  /*font-size: 73px;*/
+  font-size: 1.2222222222222rem;
   color: #ddb63f;
 }
 
@@ -338,4 +294,65 @@ footer
 }
 
 
+@font-face {font-family: "iconfont";
+  src: url('./assets/fonts/iconfont.eot?t=1477991029704'); /* IE9*/
+  src: url('./assets/fonts/iconfont.eot?t=1477991029704#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./assets/fonts/iconfont.woff?t=1477991029704') format('woff'), /* chrome, firefox */
+  url('./assets/fonts/iconfont.ttf?t=1477991029704') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./assets/fonts/iconfont.svg?t=1477991029704#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  /*font-size:47px;*/
+  font-size: 0.66666666666667rem;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shishangpeishi:before { content: "\e610"; }
+
+.icon-jiajuliangpin:before { content: "\e611"; }
+
+.icon-bangongliangpin:before { content: "\e612"; }
+
+.icon-liyuxianhua:before { content: "\e613"; }
+
+.icon-gongzibaozhen:before { content: "\e614"; }
+
+.icon-meihujianshen:before { content: "\e615"; }
+
+.icon-dongmanjifu:before { content: "\e616"; }
+
+.icon-quanbu:before { content: "\e617"; }
+
+.icon-qiaokeli:before { content: "\e618"; }
+
+.icon-chanshiguanqu:before { content: "\e619"; }
+
+.icon-shishangpeishi1:before { content: "\e61a"; }
+
+.icon-shumajixie:before { content: "\e61b"; }
+
+.icon-weijinshoutao:before { content: "\e61c"; }
+
+.icon-wenjuqiapian:before { content: "\e61d"; }
+
+.icon-xiangshuixiangxun:before { content: "\e61e"; }
+
+.icon-yizhuoliangpin:before { content: "\e61f"; }
+
+.icon-xinyihezi:before { content: "\e620"; }
+
+.icon-xiaoxi:before { content: "\e621"; }
+
+.icon-fabu:before { content: "\e622"; }
+
+.icon-wode:before { content: "\e623"; }
+
+.icon-shouye:before { content: "\e624"; }
+
+.icon-liwu:before { content: "\e625"; }
 </style>

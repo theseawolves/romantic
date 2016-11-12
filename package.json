@@ -12,6 +12,7 @@
     "test": "npm run unit && npm run e2e"
   },
   "dependencies": {
+    "fastclick": "^1.0.6",
     "mint-ui": "^2.0.2",
     "vue": "^2.0.1",
     "vue-awesome-swiper": "^2.2.0",

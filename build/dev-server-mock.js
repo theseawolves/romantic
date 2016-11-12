@@ -22,32 +22,32 @@ app.post('/issues',function(req, res) {
       subtitleText: '追求',
       subtitleDate: 'Jul,27,2016',
       id: 123,
-      link: 'http://192.168.31.173:8888/static/images/690x460.png',
+      link: 'http://192.168.31.173:8888/static/images/720×480.png',
       title: '进口满天星花束',
       price: 198.00,
       tinyPictures:[
         {
           id: 1,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
-          title: '壁花小姐',
+          link: 'http://192.168.31.173:8888/static/images/268×202_1.png',
+          title: '壁花小姐佳佳',
           price: 65.00
         },
         {
           id: 2,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
+          link: 'http://192.168.31.173:8888/static/images/268×202_1.png',
           title: '壁花小姐',
           price: 65.00
         },
         {
           id: 1,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
-          title: '壁花小姐',
+          link: 'http://192.168.31.173:8888/static/images/268×202_1.png',
+          title: '壁花小姐佳佳',
           price: 65.00
         },
         {
           id: 2,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
-          title: '壁花小姐',
+          link: 'http://192.168.31.173:8888/static/images/268×202_1.png',
+          title: '壁花小姐佳佳',
           price: 65.00
         }
       ]
@@ -58,31 +58,31 @@ app.post('/issues',function(req, res) {
       subtitleText: '刚毅',
       subtitleDate: 'Jul,5,2016',
       id: 123,
-      link: 'http://192.168.31.173:8888/static/images/690x460.png',
+      link: 'http://192.168.31.173:8888/static/images/720×480.png',
       title: '进口满天星花束',
       price: 198.00,
       tinyPictures:[
         {
           id: 1,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
+          link: 'http://192.168.31.173:8888/static/images/268×202_2.png',
           title: '壁花小姐',
           price: 65.00
         },
         {
           id: 2,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
+          link: 'http://192.168.31.173:8888/static/images/268×202_2.png',
           title: '壁花小姐',
           price: 65.00
         },
         {
           id: 3,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
+          link: 'http://192.168.31.173:8888/static/images/268×202_2.png',
           title: '壁花小姐',
           price: 65.00
         },
         {
           id: 4,
-          link: 'http://192.168.31.173:8888/static/images/255x196.png',
+          link: 'http://192.168.31.173:8888/static/images/268×202_2.png',
           title: '壁花小姐',
           price: 65.00
         }

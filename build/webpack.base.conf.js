@@ -74,7 +74,7 @@ module.exports = {
       //   browsers: ['last 2 versions']
       // })
       require('autoprefixer')(),
-      // px2rem({remUnit: 75})
+      px2rem({remUnit: 75})
     ]
   }
 }
