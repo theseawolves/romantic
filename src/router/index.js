@@ -21,8 +21,8 @@ export default new Router({
     { name: 'add' , path: '/add', component: Add },
     { name: 'message' , path: '/message', component: Message },
     { name: 'me' , path: '/me', component: Me },
-    { name: 'details' , path: '/details', component: Details },
-    { name: 'search' , path: '/search', component: Search },
+    { name: 'details' , path: '/details', components: {'details':Details} },
+    { name: 'search' , path: '/search', components: {'search': Search} },
     { path: '*', redirect: '/gift' }
   ]
 })

@@ -1,28 +1,40 @@
 <template>
     <div id="app" class="page-tabbar">
         <div class="page-wrap">
+
             <mt-tab-container class="page-tabbar-container" v-model="selected">
                 <mt-tab-container-item id="home">
                     <mt-cell v-for="n in 100" :title="'餐厅 ' + n" />
                 </mt-tab-container-item>
                 <mt-tab-container-item id="gift">
-                    <mt-cell v-for="n in 50" :title="'订单 ' + n" />
+                  <keep-alive>
+                    <component :is="selected" v-if="!showDetails">
+                    </component>
+                  </keep-alive>
+                  <transition name="fade">
+                    <keep-alive>
+                      <router-view name="details"></router-view>
+                    </keep-alive>
+                  </transition>
+                  <transition name="fade">
+                    <keep-alive>
+                      <router-view name="search"></router-view>
+                    </keep-alive>
+                  </transition>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="add">
-                    <mt-cell v-for="n in 70" :title="'发现 ' + n" />
+                    <mt-cell v-for="n in 70" :title="'发布 ' + n" />
                 </mt-tab-container-item>
                 <mt-tab-container-item id="message">
-                    <mt-cell v-for="n in 70" :title="'发现 ' + n" />
+                    <mt-cell v-for="n in 70" :title="'消息 ' + n" />
                 </mt-tab-container-item>
                 <mt-tab-container-item id="me">
-                    <div class="page-part">
-                        <mt-cell v-for="n in 120" :title="'我的 ' + n" />
-                    </div>
+                  <mt-cell v-for="n in 120" :title="'我的 ' + n" />
                 </mt-tab-container-item>
             </mt-tab-container>
         </div>
 
-        <mt-tabbar v-model="selected" fixed>
+        <mt-tabbar v-model="selected" v-if="!showDetails" fixed>
             <mt-tab-item id="home">
               <svg class="icon" slot="icon" aria-hidden="true">
                 <use xlink:href="#icon-shouye"></use>
@@ -49,6 +61,7 @@
               </svg>  我的
             </mt-tab-item>
         </mt-tabbar>
+
     </div>
 </template>
 
@@ -59,14 +72,24 @@
     import './assets/fonts/iconfont.js?strict=false'
     import './assets/fonts/iconfont.css'
     import './assets/fonts/webfont.css'
+    import Gift from './components/Gift.vue'
 
     Vue.use(Mint)
+
     export default {
         name: 'romanski',
+        components: { Gift },
         data() {
             return {
-                selected: 'gift'
-            };
+                selected: 'gift',
+                showDetails: false
+            }
+        },
+        watch: {
+          '$route' (to, from) {
+            this.showDetails = to.path === '/details' || to.path === '/search'  ? true : false
+
+          }
         }
     };
 </script>
@@ -82,8 +105,16 @@
       font-family:"webfont" !important;
     }
     #app .mint-tab-container {
-      margin-bottom: 95px;
+      margin-bottom: 110px;
     }
+
+    .fade-enter-active, .fade-leave-active {
+      transition: all .2s ease
+    }
+    .fade-enter, .fade-leave-active {
+      opacity: 0
+    }
+
 
     .page-tabbar {
         overflow: hidden;
