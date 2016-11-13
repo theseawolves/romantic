@@ -56,7 +56,7 @@
 </script>
 
 <style>
-    .page-tabbar {
+    /*.page-tabbar {
         overflow: hidden;
         height: 100vh;
     }
@@ -65,5 +65,5 @@
         overflow: auto;
         height: 100%;
         padding-bottom: 100px;
-    }
+    }*/
 </style>
