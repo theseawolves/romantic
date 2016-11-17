@@ -4,7 +4,7 @@
 
             <mt-tab-container class="page-tabbar-container" v-model="selected">
                 <mt-tab-container-item id="home">
-                    <mt-cell v-for="n in 100" :title="'首页 ' + n" />
+                    <mt-cell v-for="n in 100" :title="'餐厅 ' + n" />
                 </mt-tab-container-item>
                 <mt-tab-container-item id="gift">
                   <keep-alive>
