@@ -1,0 +1,86 @@
+[v-cloak] {
+    visibility: hidden
+}
+
+*,
+:after,
+:before {
+    box-sizing: inherit;
+    -webkit-tap-highlight-color: transparent;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation
+}
+
+html {
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: Helvetica Neue, Tahoma, Arial, PingFangSC-Regular, Hiragino Sans GB, Microsoft Yahei, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+body,
+dd,
+dl,
+ol,
+ul {
+    margin: 0;
+    padding: 0
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+a {
+    outline: none;
+    color: #333;
+    text-decoration: none
+}
+
+a,
+img {
+    -webkit-touch-callout: none
+}
+
+button,
+input,
+select,
+textarea {
+    outline: none;
+    border: none;
+    font-size: inherit
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    font-weight: 400
+}
+
+img {
+    max-width: 100%
+}
+
+textarea {
+    resize: none
+}
+
+input[type=button],
+input[type=reset],
+input[type=submit] {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button
+}

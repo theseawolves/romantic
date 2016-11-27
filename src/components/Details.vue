@@ -157,8 +157,8 @@
     import Vue from 'vue'
     import Mint from 'mint-ui'
     import 'mint-ui/lib/style.css'
-    import '../assets/fonts/iconfont_details.js?strict=false'
-    import '../assets/fonts/iconfont_details.css'
+    // import '../assets/fonts/iconfont_details.js?strict=false'
+    // import '../assets/fonts/iconfont_details.css'
 
     Vue.use(Mint)
     export default {
