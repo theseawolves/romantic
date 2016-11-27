@@ -164,6 +164,9 @@
         fill: #ddb63f;
         text-decoration: none;
     }
+    #app .mint-tab-item.is-selected .mint-tab-item-label {      
+      color: #ddb63f;
+    }
 
 
 </style>

@@ -15,6 +15,7 @@ html {
     box-sizing: border-box;
     background-color: #f4f4f4;
     color: #333;
+    letter-spacing: 1.6px;
     font-family: Helvetica Neue, Tahoma, Arial, PingFangSC-Regular, Hiragino Sans GB, Microsoft Yahei, sans-serif;
     -webkit-user-select: none;
     -moz-user-select: none;
