@@ -1,8 +1,9 @@
 <template lang="html">
   <div class="">
     <header class="gift-header">
-      <div class="left">
-      </div>
+      <a class="left">
+        &nbsp;
+      </a>
       <div class="center">
         礼物
       </div>
@@ -37,18 +38,21 @@ export default {
   background-color: #ddb63f;
 
 }
+
 .gift-header .center {
   text-align: center;
-  font-size: 36px;
+  font-size: 36px;/*px*/
   color: #fff;
+  flex-basis: 60%;
 }
-.gift-header .right {
+.gift-header .left, .gift-header .right {
   padding: 20px 40px;
+  flex-basis: 20%;
+  text-align: center;
 }
 .gift-header .right > i.mintui {
-  display: block;
-  width: 40px;
-  font-size: 40px;
+  width: 40px;/*px*/
+  font-size: 40px;/*px*/
   color: #fff;
 }
 
