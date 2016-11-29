@@ -18,6 +18,11 @@
                   </transition>
                   <transition name="fade">
                     <keep-alive>
+                      <router-view name="category"></router-view>
+                    </keep-alive>
+                  </transition>
+                  <transition name="fade">
+                    <keep-alive>
                       <router-view name="search"></router-view>
                     </keep-alive>
                   </transition>
@@ -91,7 +96,7 @@
         },
         watch: {
             '$route' (to, from) {
-                this.showDetails = to.path === '/details' || to.path === '/search' ? true : false
+                this.showDetails = to.path === '/details' || to.path === '/search' || to.path === '/category' ? true : false
 
             }
         }
@@ -164,7 +169,7 @@
         fill: #ddb63f;
         text-decoration: none;
     }
-    #app .mint-tab-item.is-selected .mint-tab-item-label {      
+    #app .mint-tab-item.is-selected .mint-tab-item-label {
       color: #ddb63f;
     }
 

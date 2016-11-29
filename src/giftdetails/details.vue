@@ -1,17 +1,11 @@
 <template>
-
+  礼物详情页面
+  <pre>{{ this.$route.query | json }}</pre>
 </template>
 
 <script>
 export default {
-  data: function () {
-    return {
-    }
-  },
-  computed: {},
-  ready: function () {},
-  methods: {},
-  components: {}
+  name: 'giftDetails'
 }
 </script>
 

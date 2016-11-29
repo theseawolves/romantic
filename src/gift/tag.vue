@@ -2,7 +2,10 @@
   <div class="gift-tag">
     <mt-swipe :auto="0" :show-indicators="false">
       <mt-swipe-item v-for="tag in giftTags">
-        <a href="#" v-for="item in tag">{{item}}</a>
+        <router-link v-for="item in tag"
+          :to="{ path:'/details', query:{ name: item} }" exact>
+          {{item}}
+        </router-link>
       </mt-swipe-item>
     </mt-swipe>
   </div>
