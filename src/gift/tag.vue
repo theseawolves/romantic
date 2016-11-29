@@ -13,16 +13,12 @@
 
 <script>
 export default {
-  data: function () {
+  data () {
     return {
       giftTags: [['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚'], ['#结婚','#红颜知己', '#蓝颜知己', '#办公室恋情', '#第三者']],
 
     }
-  },
-  computed: {},
-  attached: function () {},
-  methods: {},
-  components: {}
+  }
 }
 </script>
 

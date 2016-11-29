@@ -1,14 +1,18 @@
 <template lang="html">
   <div class="">
     <header class="gift-header">
-      <a class="left">
-        &nbsp;
-      </a>
+      <router-link :to = "{ path: '/gift'}" class="left">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-fanhui"></use>
+        </svg>
+      </router-link>
       <div class="center">
         礼物
       </div>
-      <router-link :to = "{ path: '/search'}" class="right">
-        <i class="mintui mintui-search" ></i>
+      <router-link :to = "{ path: '/share'}" class="right">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-fenxiang"></use>
+        </svg>
       </router-link>
     </header>
 
@@ -18,14 +22,10 @@
 <script>
 
 export default {
-  data: function () {
+  data () {
     return {
     }
-  },
-  computed: {},
-  attached: function () {},
-  methods: {},
-  components: {}
+  }
 }
 </script>
 
@@ -46,21 +46,24 @@ export default {
   flex-basis: 60%;
 }
 .gift-header .left, .gift-header .right {
+  display: flex;
   padding: 20px 40px;
   height: 80px;
   flex-basis: 20%;
   text-align: center;
+  justify-content: space-between;
 }
-.gift-header .right > i.mintui {
+.gift-header svg {
   width: 40px;/*px*/
+  height: 40px;/*px*/
   font-size: 40px;/*px*/
   color: #fff;
+  fill: #fff;
 }
-
 .gift-header .right {
   position: relative;
 }
-.gift-header .right i {
+.gift-header .right svg {
   position: absolute;
   right: 40px;
 }

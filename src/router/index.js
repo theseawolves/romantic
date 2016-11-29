@@ -11,7 +11,7 @@ import Me from '../components/Me.vue'
 import Details from '../giftdetails/details.vue'
 import Search from '../giftsearch/search.vue'
 import Category from '../giftcategory/details.vue'
-
+import Comments from '../comment/comment.vue'
 
 export default new Router({
   // mode: 'history',
@@ -25,6 +25,7 @@ export default new Router({
     { name: 'details' , path: '/details', components: {'details':Details} },
     { name: 'search' , path: '/search', components: {'search': Search} },
     { name: 'category' , path: '/category', components: {'category': Category} },
+    { name: 'comments' , path: '/comments', components: {'comments': Comments} },
     { path: '*', redirect: '/gift' }
   ]
 })
