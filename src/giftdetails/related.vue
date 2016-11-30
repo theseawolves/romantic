@@ -86,6 +86,7 @@ export default {
   background-position: 50% 50%;
   background-size: cover;
   background-color: #eee;
+  overflow: hidden;
 }
 
 
