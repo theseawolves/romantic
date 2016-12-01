@@ -32,14 +32,18 @@ module.exports = {
       //     '^/issues': '/issues'
       //   }
       // },
-      '/api/topPageTags': {
+      // '/api/topPageTags': {
+      //   target: 'http://romanski.ic60x.com/bg/index.php?',
+      //   changeOrigin: true
+      // },
+      // '/api/topPageCampaignList/**': {
+      //   target: 'http://romanski.ic60x.com/bg/index.php?',
+      //   changeOrigin: true
+      // },
+      '/api/**/*': {
         target: 'http://romanski.ic60x.com/bg/index.php?',
         changeOrigin: true
-      },
-      '/api/topPageCampaignList/**': {
-        target: 'http://romanski.ic60x.com/bg/index.php?',
-        changeOrigin: true
-      },
+      }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

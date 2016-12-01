@@ -250,6 +250,15 @@ export default {
 .gift-category .mint-swipe-item {
   line-height: inherit;
 }
+.gift-category .mint-swipe-indicator {
+  width: 20px;
+  height: 20px;
+}
+.gift-category .mint-swipe-indicator.is-active {
+  background: #ddb63f;
+  opacity: 1;
+}
+
 .gift-category a {
   float: left;
   width: 20%;

@@ -1,56 +1,53 @@
 <template lang="html">
   <div class="gift-intro">
-    <mt-swipe :auto="0">
-      <mt-swipe-item>
-        <img src="../assets/images/750x750.png" alt="" />
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <img src="../assets/images/750x750.png" alt="" />
-      </mt-swipe-item>
-      <mt-swipe-item>
-        <img src="../assets/images/750x750.png" alt="" />
-      </mt-swipe-item>
-    </mt-swipe>
-    <div class="sold">
-      <span class="sold-info">已售</span>
-      <span class="sold-count">739</span>
-    </div>
-    <h1 class="title">进口满天星花束</h1>
-    <p class="desc">
-      粉色满天星的花语是真心喜欢你，胜过爱情，更胜过自己。我只喜欢你好，我就好～粉色满天星的花语是真心喜欢你，胜过爱情，更胜过自己。我只喜欢你好，我就好～
-    </p>
-    <div class="price">
-      <span class="discount-price">￥198</span>
-      <span class="before-discount-price">￥358</span>
-    </div>
-    <div class="express">
-      <span>快递：</span>
-      <span class="express-freight">免运费</span>
-    </div>
-    <hr>
-    <div class="social">
-      <div class="social-item social-ta">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-songgeiTA"></use>
-        </svg>
-        <span class="social-title">送给TA</span>
+    <template>
+      <mt-swipe :auto="0">
+        <mt-swipe-item v-for = "item in commodityDetail.img">
+          <img :src="item" alt="" />
+        </mt-swipe-item>
+      </mt-swipe>
+      <div class="sold">
+        <span class="sold-info">已售</span>
+        <span class="sold-count">{{commodityDetail.sales}}</span>
       </div>
-      <div class="social-item social-xihuan">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-xihuan"></use>
-        </svg>
-        <span class="social-title">收藏</span>
+      <h1 class="title">{{commodityDetail.title}}</h1>
+      <p class="desc">
+        {{commodityDetail.desc}}
+      </p>
+      <div class="price">
+        <span class="discount-price">￥{{commodityDetail.price}}</span>
+        <span class="before-discount-price">￥{{commodityDetail.originprice}}</span>
       </div>
-      <div class="social-item social-jiarugouwuche">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-jiarugouwuche"></use>
-        </svg>
-        <span class="social-title">加入购物车</span>
+      <div class="express">
+        <span>快递：</span>
+        <span class="express-freight">免运费</span>
       </div>
-      <div class="social-item social-shop">
-        <span class="social-title">去天猫购买</span>
+      <hr>
+      <div class="social">
+        <div class="social-item social-ta">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-songgeiTA"></use>
+          </svg>
+          <span class="social-title">送给TA</span>
+        </div>
+        <div class="social-item social-xihuan">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-xihuan"></use>
+          </svg>
+          <span class="social-title">收藏</span>
+        </div>
+        <div class="social-item social-jiarugouwuche">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-jiarugouwuche"></use>
+          </svg>
+          <span class="social-title">加入购物车</span>
+        </div>
+        <div class="social-item social-shop">
+          <span class="social-title">去天猫购买</span>
+        </div>
       </div>
-    </div>
+
+    </template>
 
   </div>
 </template>
@@ -60,7 +57,32 @@ import Vue from 'vue'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 export default {
-  name: 'giftintro'
+  name: 'giftintro',
+  data () {
+    return {
+      baseUrl: 'http://romanski.ic60x.com/bg/index.php?',
+      introUrl: '/api/commodityDetail/',
+      commodityId: 1,
+      commodityDetail: {}
+    }
+  },
+  computed: {
+    url () {
+      return window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('natapp.cc') > -1 ? '' : this.baseUrl
+    }
+  },
+  mounted () {
+    this.$http.get(this.url + this.introUrl + this.commodityId).then((response) => {
+        let data = JSON.parse(response.data)
+        console.log(JSON.parse(response.data))
+        this.commodityDetail = data
+
+    }, (response) => {
+        console.log('error')
+        console.log(response)
+    })
+  }
+
 }
 </script>
 
