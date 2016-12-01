@@ -31,6 +31,11 @@
                       <router-view name="comments"></router-view>
                     </keep-alive>
                   </transition>
+                  <transition name="fade">
+                    <keep-alive>
+                      <router-view name="tag"></router-view>
+                    </keep-alive>
+                  </transition>
                 </mt-tab-container-item>
                 <mt-tab-container-item id="add">
                     <mt-cell v-for="n in 70" :title="'发布 ' + n" />
@@ -105,7 +110,8 @@
                 to.path === '/details' ||
                 to.path === '/search' ||
                 to.path === '/category' ||
-                to.path === '/comments'
+                to.path === '/comments' ||
+                to.path === '/tag'
 
                 ? true : false
 

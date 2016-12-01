@@ -10,12 +10,13 @@ import Message from '../components/Message.vue'
 import Me from '../components/Me.vue'
 import Details from '../giftdetails/details.vue'
 import Search from '../giftsearch/search.vue'
-import Category from '../giftcategory/details.vue'
+import Category from '../giftcategory/category.vue'
 import Comments from '../comment/comment.vue'
+import Tag from '../gifttag/tag.vue'
 
 export default new Router({
-  // mode: 'history',
-  //scrollBehavior: () => ({ y: 0 }),
+  mode: 'history',
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
     { name: 'home', path: '/home', component: Home},
     { name: 'gift' , path: '/gift', component: Gift },
@@ -26,6 +27,7 @@ export default new Router({
     { name: 'search' , path: '/search', components: {'search': Search} },
     { name: 'category' , path: '/category', components: {'category': Category} },
     { name: 'comments' , path: '/comments', components: {'comments': Comments} },
+    { name: 'tag' , path: '/tag', components: {'tag': Tag} },
     { path: '*', redirect: '/gift' }
   ]
 })

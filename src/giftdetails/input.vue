@@ -50,7 +50,7 @@ export default {
   background: #e2e2e2;
   font-size: 16px;/*px*/
   line-height: 54px;
-  padding-left: 99px;
+  padding-left: 77px;
 
 }
 </style>
