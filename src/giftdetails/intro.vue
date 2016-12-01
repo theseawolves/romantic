@@ -74,7 +74,6 @@ export default {
   mounted () {
     this.$http.get(this.url + this.introUrl + this.commodityId).then((response) => {
         let data = JSON.parse(response.data)
-        console.log(JSON.parse(response.data))
         this.commodityDetail = data
 
     }, (response) => {

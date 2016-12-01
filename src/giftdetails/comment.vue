@@ -4,82 +4,50 @@
       <span>&nbsp;</span>
       <router-link to="/comments">查看更多</router-link>
     </section>
-    <section class="item">
+    <section class="item" v-for = "item in commodityComments">
       <div class="left-wrap">
-        <img src="../assets/images/60x60.png" class="avatar" alt="" />
+        <img :src="item.avatar" class="avatar" alt="" />
       </div>
       <div class="right-wrap">
-        <section class="line">
-          <a href="#" class="title">左边脚的搁浅</a>
-          <span class="time">2016-08-26 13:58</span>
+        <section class="line" :id="item.userid">
+          <a href="#" class="title">{{item.username}}</a>
+          <span class="time">{{item.date}}</span>
         </section>
         <section class="line">
-          <span class="label">这个礼物很好看，谁能送给我呀！</span>
+          <span class="label">{{item.comment}}</span>
         </section>
       </div>
     </section>
-    <section class="item">
-      <div class="left-wrap">
-        <img src="../assets/images/60x60.png" class="avatar" alt="" />
-      </div>
-      <div class="right-wrap">
-        <section class="line">
-          <a href="#" class="title">左边脚的搁浅</a>
-          <span class="time">2016-08-26 13:58</span>
-        </section>
-        <section class="line">
-          <span class="label">这个礼物很好看，谁能送给我呀！</span>
-        </section>
-      </div>
-    </section>
-    <section class="item">
-      <div class="left-wrap">
-        <img src="../assets/images/60x60.png" class="avatar" alt="" />
-      </div>
-      <div class="right-wrap">
-        <section class="line">
-          <a href="#" class="title">左边脚的搁浅</a>
-          <span class="time">2016-08-26 13:58</span>
-        </section>
-        <section class="line">
-          <span class="label">这个礼物很好看，谁能送给我呀！</span>
-        </section>
-      </div>
-    </section>
-    <section class="item">
-      <div class="left-wrap">
-        <img src="../assets/images/60x60.png" class="avatar" alt="" />
-      </div>
-      <div class="right-wrap">
-        <section class="line">
-          <a href="#" class="title">左边脚的搁浅</a>
-          <span class="time">2016-08-26 13:58</span>
-        </section>
-        <section class="line">
-          <span class="label">这个礼物很好看，谁能送给我呀！</span>
-        </section>
-      </div>
-    </section>
-    <section class="item">
-      <div class="left-wrap">
-        <img src="../assets/images/60x60.png" class="avatar" alt="" />
-      </div>
-      <div class="right-wrap">
-        <section class="line">
-          <a href="#" class="title">左边脚的搁浅</a>
-          <span class="time">2016-08-26 13:58</span>
-        </section>
-        <section class="line">
-          <span class="label">这个礼物很好看，谁能送给我呀！</span>
-        </section>
-      </div>
-    </section>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'giftComment'
+  name: 'giftComment',
+  data () {
+    return {
+      baseUrl: 'http://romanski.ic60x.com/bg/index.php?',
+      commentUrl: '/api/commodityComments/',
+      commodityId: 1,
+      commodityComments: []
+    }
+  },
+  computed: {
+    url () {
+      return window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('natapp.cc') > -1 ? '' : this.baseUrl
+    }
+  },
+  mounted () {
+    this.$http.get(this.url + this.commentUrl + this.commodityId).then((response) => {
+        let data = JSON.parse(response.data)
+        this.commodityComments = data
+
+    }, (response) => {
+        console.log('error')
+        console.log(response)
+    })
+  }
 }
 </script>
 
