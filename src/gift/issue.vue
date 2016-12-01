@@ -56,6 +56,7 @@ export default {
   data () {
     return {
       issues: [],
+      baseUrl: 'http://romanski.ic60x.com/bg/index.php?',
       issueUrl: '/api/topPageCampaignList/',
       page: 1
     }
@@ -73,7 +74,7 @@ export default {
       return sets;
     }
 
-      this.$http.post(this.issueUrl + this.page).then((response) => {
+      this.$http.get(this.url + this.issueUrl + this.page).then((response) => {
           let data = JSON.parse(response.data)
           data.forEach(item => {
             let r = item.tinyList.chunk(2)

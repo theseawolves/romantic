@@ -25,6 +25,11 @@ export default {
 
     }
   },
+  computed: {
+    url () {
+      return window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('natapp.cc') > -1 ? '' : this.baseUrl
+    }
+  },
   mounted () {
     Array.prototype.chunk = function(groupsize){
       var sets = [], chunks, i = 0;
@@ -37,7 +42,7 @@ export default {
 
       return sets;
     }
-    this.$http.get(this.tagUrl).then((response) => {
+    this.$http.get(this.url + this.tagUrl).then((response) => {
         let data = JSON.parse(response.data)
         let r = []
         data.forEach(item => {
