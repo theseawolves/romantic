@@ -61,6 +61,11 @@ export default {
       page: 1
     }
   },
+  computed: {
+    url () {
+      return window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('natapp.cc') > -1 ? '' : this.baseUrl
+    }
+  },
   mounted() {
     Array.prototype.chunk = function(groupsize){
       var sets = [], chunks, i = 0;
