@@ -94,7 +94,7 @@ app.post('/issues',function(req, res) {
             title: '壁花小姐',
             price: 65.00
           }
-        ]       
+        ]
 
       ]
     }

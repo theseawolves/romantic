@@ -2,36 +2,36 @@
 <div class="gift-issues">
   <div class="gift-issue" v-for="item in issues">
     <div class="issue-larger">
-      <h1 class="issue-headline" v-text="item.headline"></h1>
+      <h1 class="issue-headline" v-text="item.title"></h1>
       <div class="issue-subtitle">
         <p class="vux-divider">
-          <span class="issue-subtitle-text" v-text="item.subtitleText"></span>
-          <span class="issue-subtitle-date" v-text="item.subtitleDate"></span>
+          <span class="issue-subtitle-text" v-text="item.tag"></span>
+          <span class="issue-subtitle-date" v-text="item.date"></span>
         </p>
       </div>
       <div class="issue-link">
-        <router-link :to="{ path:'/details', query:{ issueId: item.issueId, type: 'larger', id: item.id} }" exact>
-          <div class="issue-link-body" :style="{'background-image':'url('+item.link+')'}">
+        <router-link :to="{ path:'/details', query:{ issueId: item.campaignId, type: 'larger', id: item.commodityId} }" exact>
+          <div class="issue-link-body" :style="{'background-image':'url('+item.commodityImg+')'}">
           </div>
         </router-link>
         <div class="issue-desc">
-          <div class="issue-link-title" v-text="item.title"></div>
-          <div class="issue-link-price" v-text="'￥'+item.price"></div>
+          <div class="issue-link-title" v-text="item.commodityTitle"></div>
+          <div class="issue-link-price" v-text="'￥'+item.commodityPrice"></div>
 
         </div>
       </div>
     </div>
     <div class="issue-tiny">
       <mt-swipe :auto="0" :show-indicators="false">
-        <mt-swipe-item v-for="tiny in item.tinyPictures">
+        <mt-swipe-item v-for="tiny in item.tinyList">
           <div class="issue-link" v-for="t in tiny">
-            <router-link :to="{ path:'/details', query:{ issueId: item.issueId, type: 'tiny', id: item.id} }" exact>
-              <div class="issue-link-body" :style="{'background-image':'url('+t.link+')'}">
+            <router-link :to="{ path:'/details', query:{ issueId: item.campaignId, type: 'tiny', id: t.commodityId } }" exact>
+              <div class="issue-link-body" :style="{'background-image':'url('+t.commodityImg+')'}">
               </div>
             </router-link>
             <div class="issue-desc">
-              <div class="issue-link-title" v-text="t.title"></div>
-              <div class="issue-link-price" v-text="'￥'+t.price"></div>
+              <div class="issue-link-title" v-text="t.commodityTitle"></div>
+              <div class="issue-link-price" v-text="'￥'+t.commodityPrice"></div>
             </div>
           </div>
 
@@ -55,20 +55,35 @@ Vue.use(VueResource)
 export default {
   data () {
     return {
-      issues: []
+      issues: [],
+      issueUrl: '/api/topPageCampaignList/',
+      page: 1
     }
   },
-  computed: {
-      url() {
-          return window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('natapp.cc') > -1 ? '' : this.baseUrl
-      }
-  },
   mounted() {
-      this.$http.post(this.url + '/issues').then((response) => {
-          //console.log(response.data)
-          this.issues = response.data
+    Array.prototype.chunk = function(groupsize){
+      var sets = [], chunks, i = 0;
+      chunks = this.length / groupsize;
+
+      while(i < chunks){
+        sets[i] = this.splice(0,groupsize);
+        i++;
+      }
+
+      return sets;
+    }
+
+      this.$http.post(this.issueUrl + this.page).then((response) => {
+          let data = JSON.parse(response.data)
+          data.forEach(item => {
+            let r = item.tinyList.chunk(2)
+            item.tinyList = r
+          })
+         this.issues = data
+
       }, (response) => {
-          //console.log(response)
+        console.log('error')
+          console.log(response)
       })
   }
 }
