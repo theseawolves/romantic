@@ -15,7 +15,7 @@ import Comments from '../comment/comment.vue'
 import Tag from '../gifttag/tag.vue'
 
 export default new Router({
-  mode: 'history',
+  // mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: [
     { name: 'home', path: '/home', component: Home},
