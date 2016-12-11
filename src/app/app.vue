@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="page-tabbar">
-        <div class="page-wrap">
+        <div class="page-wrap web-font">
 
             <mt-tab-container class="page-tabbar-container" v-model="selected">
                 <mt-tab-container-item id="home">
@@ -120,7 +120,7 @@
     };
 </script>
 
-<style>
+<style lang="css">
 
     .fade-enter-active,
     .fade-leave-active {
@@ -143,50 +143,59 @@
     .page-wrap {
         overflow: auto;
         height: 100%;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 96px;/*px*/
+
     }
 
-    #app .mint-tab-item {
+    .mint-tabbar {
+      border-top: 1px solid #d9d9d9; /*no*/
+      background-color: #fff;
+
+    }
+
+    .mint-tabbar .mint-tab-item {
       flex: 1;
       text-align: center;
       display: flex;
-      padding: 6px 0;/*px*/
+      padding: 6px 0; /*px*/
       flex-wrap: wrap;
-      height: 96px;/*px*/
+      height: 96px; /*px*/
       text-decoration: none;
       fill: #acacac;
+      flex-direction: column;
+      justify-content: center;
     }
 
 
-    #app .mint-tab-item:nth-child(3) {
-      padding: 13px 0;
+    .mint-tabbar .mint-tab-item:nth-child(3) {
+      padding: 13px 0; /*px*/
       display: block;
       text-align: center;
     }
-    #app .mint-tab-item:nth-child(3) .mint-tab-item-icon {
-      width: 70px;/*px*/
-      height: 70px;/*px*/
+    .mint-tabbar .mint-tab-item:nth-child(3) .mint-tab-item-icon {
+      width: 70px; /*px*/
+      height: 70px; /*px*/
       text-align: center;
       fill: #acacac;
     }
 
-    #app .mint-tab-item-icon {
+    .mint-tab-item > .mint-tab-item-icon {
       text-align: center;
-      flex-basis: 100%;
-      width: 45px;/*px*/
-      height: 45px;/*px*/
+      width: 45px; /*px*/
+      height: 45px; /*px*/
     }
-    #app .mint-tab-item-label {
-      flex-basis: 100%;
-      font-size: 22px;/*px*/
+    .mint-tab-item > .mint-tab-item-label {
+      font-size: 22px; /*px*/
       color: #6c6c6c;
     }
 
-    #app .mint-tab-item.is-selected {
-        background-color: #eaeaea;
+    .mint-tabbar .mint-tab-item.is-selected {
+        background-color: #fff;
         fill: #ddb63f;
         text-decoration: none;
     }
-    #app .mint-tab-item.is-selected .mint-tab-item-label {
+    .mint-tabbar .mint-tab-item.is-selected .mint-tab-item-label {
       color: #ddb63f;
     }
 

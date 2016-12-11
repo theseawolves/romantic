@@ -27,7 +27,7 @@ export default {
   name: 'giftComment',
   data () {
     return {
-      baseUrl: 'http://romanski.ic60x.com/bg/index.php?',
+      baseUrl: 'http://www.roseski.com/bg/index.php?',
       commentUrl: '/api/commodityComments/',
       commodityId: 1,
       commodityComments: []

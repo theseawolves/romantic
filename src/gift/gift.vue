@@ -1,8 +1,8 @@
 <template>
   <div class="">
-    <romanski-header></romanski-header>
-    <romanski-category></romanski-category>
-    <romanski-tag></romanski-tag>
+    <romanski-header2></romanski-header2>
+    <romanski-category2></romanski-category2>
+    <romanski-tag2></romanski-tag2>
     <romanski-issue></romanski-issue>
     <divider></divider>
 
@@ -10,18 +10,18 @@
 </template>
 
 <script>
-import RomanskiHeader from './header.vue'
-import RomanskiCategory from './category.vue'
-import RomanskiTag from './tag.vue'
+import RomanskiHeader2 from './header2.vue'
+import RomanskiCategory2 from './category2.vue'
+import RomanskiTag2 from './tag2.vue'
 import RomanskiIssue from './issue.vue'
 import Divider from '../divider/divider.vue'
 
 export default {
   name: 'gift',
   components: {
-    RomanskiHeader,
-    RomanskiCategory,
-    RomanskiTag,
+    RomanskiHeader2,
+    RomanskiCategory2,
+    RomanskiTag2,
     RomanskiIssue,
     Divider
   },

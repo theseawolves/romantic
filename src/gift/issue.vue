@@ -56,7 +56,7 @@ export default {
   data () {
     return {
       issues: [],
-      baseUrl: 'http://romanski.ic60x.com/bg/index.php?',
+      baseUrl: 'http://www.roseski.com/bg/index.php?',
       issueUrl: '/api/topPageCampaignList/',
       page: 1
     }
@@ -111,6 +111,7 @@ export default {
   text-align: center;
   color: #acacac;
   margin-bottom: 16px;
+  padding: 5px;
 }
 .vux-divider:after,.vux-divider:before {
   content: '';

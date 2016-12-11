@@ -1,15 +1,18 @@
 <template lang="html">
-  <div class="">
+  <div>
     <header class="gift-header">
-      <a class="left">
-        &nbsp;
-      </a>
+      <button class="left">
+
+      </button>
       <div class="center">
         礼物
       </div>
-      <router-link :to = "{ path: '/search'}" class="right">
-        <i class="mintui mintui-search" ></i>
-      </router-link>
+      <button class="right">
+        <router-link :to="{ path:'/search'}" exact>
+          <i class="mintui mintui-search" ></i>
+        </router-link>
+      </button>
+
     </header>
 
   </div>
@@ -29,40 +32,44 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .gift-header {
   display: flex;
   color: #fff;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   background-color: #ddb63f;
-
+  height: 80px;
+  line-height: 80px;
 }
 
 .gift-header .center {
   text-align: center;
   font-size: 36px;/*px*/
+  width: 0%;
   color: #fff;
-  flex-basis: 60%;
+  flex: 1;
 }
 .gift-header .left, .gift-header .right {
-  padding: 20px 40px;
-  height: 80px;
-  flex-basis: 20%;
+  width: 40px;
+  height: 40px;
+  margin: 20px 40px;
+  flex: none;
+  background-color: transparent;
+  overflow: hidden;
+
+}
+.gift-header .right > a {
+  display: block;
+  width: 100%;
+  height: 100%;
   text-align: center;
 }
-.gift-header .right > i.mintui {
-  width: 40px;/*px*/
-  font-size: 40px;/*px*/
+
+.gift-header .right i {
+  font-size: 36px;
   color: #fff;
 }
 
-.gift-header .right {
-  position: relative;
-}
-.gift-header .right i {
-  position: absolute;
-  right: 40px;
-}
 
 </style>

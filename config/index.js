@@ -41,7 +41,7 @@ module.exports = {
       //   changeOrigin: true
       // },
       '/api/**/*': {
-        target: 'http://romanski.ic60x.com/bg/index.php?',
+        target: 'http://www.roseski.com/bg/index.php?',
         changeOrigin: true
       }
     },

@@ -1,27 +1,42 @@
 <template lang="html">
   <div class="gift-tag">
-    <mt-swipe :auto="0" :show-indicators="false">
-      <mt-swipe-item v-for="tag in giftTags">
-        <router-link v-for="item in tag"
-          :to="{ path:'/tag', query:{ name: item} }" exact>
-          {{item}}
-        </router-link>
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper>
+      <swiper-slide v-for="tag in giftTags" >
+        <q-tab>
+          <q-tab-item v-for="item in tag">
+            <router-link  slot="title"
+              :to="{ path:'/tag', query:{ name: item} }" exact>
+              <span class="tab-title">{{item}}</span>
+            </router-link>
+          </q-tab-item>
+        </q-tab>
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import VueResource from 'vue-resource'
+import { swiper, swiperSlide, swiperPlugins } from 'vue-awesome-swiper'
+import qTab from '../components/qtab.vue'
+import qTabItem from '../components/qtabitem.vue'
+
 
 Vue.use(VueResource)
 export default {
+  components: {
+    swiper,
+    swiperSlide,
+    qTab,
+    qTabItem
+  },
   data () {
     return {
-      giftTags: [['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚'], ['#结婚','#红颜知己', '#蓝颜知己', '#办公室恋情', '#第三者']],
+      giftTags:[],
+      //giftTags: [['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚'], ['#结婚','#红颜知己', '#蓝颜知己', '#办公恋情', '#第三者']],
       baseUrl: 'http://www.roseski.com/bg/index.php?',
-      tagUrl: '/api/topPageTags'
+      tagUrl: '/api/topPageTags',
 
     }
   },
@@ -49,6 +64,7 @@ export default {
           r.push(item.tag)
         })
         this.giftTags = r.chunk(6)
+        //this.giftTags = r
 
     }, (response) => {
         console.log('error')
@@ -66,17 +82,12 @@ export default {
   background-color: #fff;
   margin-top: 10px;
 }
-.gift-tag .mint-swipe {
-  height: 100%;
+.gift-tag .q-tab {
+  height: 66px;
+  line-height: 66px;
 }
 
-.gift-tag .mint-swipe-item {
-  line-height: inherit;
-}
-.gift-tag a {
-  float: left;
-  width: 16.666666666667%;
-  text-decoration: none;
+.gift-tag .q-tab-item a ,.gift-tag .q-tab-item a .tab-title  {
   font-size: 22px;/*px*/
   color: #ddb63f;
   text-align: center;
@@ -84,4 +95,5 @@ export default {
   height: 66px;/*px*/
   line-height: 66px; /*px*/
 }
+
 </style>

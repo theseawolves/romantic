@@ -60,7 +60,7 @@ export default {
   name: 'giftintro',
   data () {
     return {
-      baseUrl: 'http://romanski.ic60x.com/bg/index.php?',
+      baseUrl: 'http://www.roseski.com/bg/index.php?',
       introUrl: '/api/commodityDetail/',
       commodityId: 1,
       commodityDetail: {}
