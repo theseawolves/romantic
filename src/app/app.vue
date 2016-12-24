@@ -3,58 +3,24 @@
         <div class="page">
           <div class="page__bd">
             <div class="roseski-tab">
+              <!-- panel -->
               <div class="roseski-tab__panel">
-
+                <router-view></router-view>
               </div>
-              <div class="roseski-tabbar">
-                <a href="#" class="roseski-tabbar__item roseski-tabbar__item_on">
-                  <span>
-                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
-                      <use xlink:href="#icon-shouye"></use>
-                    </svg>
-                  </span>
-                  <p class="roseski-tabbar__label">
-                    首页
-                  </p>
-                </a>
-                <a href="#" class="roseski-tabbar__item">
-                  <span>
-                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
-                      <use xlink:href="#icon-liwu"></use>
-                    </svg>
-                  </span>
-                  <p class="roseski-tabbar__label">
-                    礼物
-                  </p>
-                </a>
-                <a href="#" class="roseski-tabbar__item">
-                  <span>
-                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
-                      <use xlink:href="#icon-fabu"></use>
-                    </svg>
-                  </span>
-                  <p class="roseski-tabbar__label">
 
-                  </p>
-                </a>
-                <a href="#" class="roseski-tabbar__item">
+              <!-- tabbar -->
+              <div class="roseski-tabbar">
+                <a v-for="item in tabbarItems"
+                  :class="{ 'roseski-tabbar__item_on': selected == item.id }"
+                  @click="handleClick(item.id)"
+                  class="roseski-tabbar__item">
                   <span>
                     <svg class="icon roseski-tabbar__icon" aria-hidden="true">
-                      <use xlink:href="#icon-xiaoxi"></use>
+                      <use v-bind="{ 'xlink:href': '#icon-'+item.name }"></use>
                     </svg>
                   </span>
                   <p class="roseski-tabbar__label">
-                    消息
-                  </p>
-                </a>
-                <a href="#" class="roseski-tabbar__item">
-                  <span>
-                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
-                      <use xlink:href="#icon-wode"></use>
-                    </svg>
-                  </span>
-                  <p class="roseski-tabbar__label">
-                    我的
+                    {{item.label}}
                   </p>
                 </a>
               </div>
@@ -109,33 +75,7 @@
     </mt-tab-container>
 
 
-  <mt-tabbar v-model="selected" v-if="!showDetails" class="web-font" fixed>
-    <mt-tab-item id="home">
-      <svg class="icon" slot="icon" aria-hidden="true">
-        <use xlink:href="#icon-shouye"></use>
-      </svg> 首页
-    </mt-tab-item>
-    <mt-tab-item id="gift">
-      <svg class="icon" slot="icon" aria-hidden="true">
-        <use xlink:href="#icon-liwu"></use>
-      </svg> 礼物
-    </mt-tab-item>
-    <mt-tab-item id="add">
-      <svg class="icon" slot="icon" aria-hidden="true">
-        <use xlink:href="#icon-fabu"></use>
-      </svg>
-    </mt-tab-item>
-    <mt-tab-item id="message">
-      <svg class="icon" slot="icon" aria-hidden="true">
-        <use xlink:href="#icon-xiaoxi"></use>
-      </svg> 消息
-    </mt-tab-item>
-    <mt-tab-item id="me">
-      <svg class="icon" slot="icon" aria-hidden="true">
-        <use xlink:href="#icon-wode"></use>
-      </svg>  我的
-    </mt-tab-item>
-  </mt-tabbar> -->
+-->
 </template>
 
 <script>
@@ -158,8 +98,15 @@
         },
         data() {
             return {
-                selected: 'gift',
-                showDetails: false
+                selected: 'home',
+                showDetails: false,
+                tabbarItems: [
+                  { id: 'home', name: 'shouye', label: '首页'},
+                  { id: 'gift', name: 'liwu', label: '礼物'},
+                  { id: 'add', name: 'fabu', label: ''},
+                  { id: 'message', name: 'xiaoxi', label: '消息'},
+                  { id: 'me', name: 'wode', label: '我的'}
+                ]
             }
         },
         watch: {
@@ -174,6 +121,12 @@
                 ? true : false
 
             }
+        },
+        methods: {
+          handleClick (name) {
+            this.selected = name
+            this.$router.push({path:name})
+          }
         }
     };
 </script>
@@ -220,9 +173,10 @@
     .roseski-tab__panel {
       height: 100%;
       box-sizing: border-box;
-      padding-bottom: 87px;/*px*/
+      padding-bottom: 86px;/*px*/
       overflow: auto;
       -webkit-overflow-scrolling: touch;
+      z-index: 1;
 
     }
     .roseski-tabbar {
@@ -237,7 +191,7 @@
     .roseski-tabbar__item {
       display: block;
       flex: 1;
-      padding: 6px 0 0;/*px*/
+      padding: 5px 0 0;/*px*/
       font-size: 0;
       color: #6c6c6c;
       fill: #acacac;
@@ -287,6 +241,7 @@
       padding-top: 0;
       display: flex;
       align-items: center;
+      justify-content: center;
     }
 
     .roseski-tabbar .roseski-tabbar__item:nth-child(3) > span {
