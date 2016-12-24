@@ -145,6 +145,7 @@
         height: 100%;
         -webkit-overflow-scrolling: touch;
         padding-bottom: 96px;/*px*/
+        z-index: 1;
 
     }
 

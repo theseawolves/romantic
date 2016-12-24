@@ -54,7 +54,8 @@ module.exports = {
         loader: 'url',
         query: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: utils.assetsPath('img/[name].[ext]')          
+          //name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
@@ -73,7 +74,7 @@ module.exports = {
       // require('autoprefixer')({
       //   browsers: ['last 2 versions']
       // })
-      require('autoprefixer')(),
+      require('autoprefixer')(['iOS >= 7', 'Android >= 4.1']),
       px2rem({remUnit: 75})
     ]
   }
