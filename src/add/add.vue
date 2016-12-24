@@ -1,12 +1,12 @@
 <template>
   <ul>
-    <li v-for="n in 100">{{n}}-home</li>
+    <li v-for="n in 100">{{n}}-add</li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'home',
+  name: 'add',
   data: function () {
     return {
     }
