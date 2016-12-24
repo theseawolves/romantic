@@ -1,83 +1,141 @@
 <template>
-    <div id="app" class="page-tabbar">
-        <div class="page-wrap web-font">
+    <div class="container">
+        <div class="page">
+          <div class="page__bd">
+            <div class="roseski-tab">
+              <div class="roseski-tab__panel">
 
-            <mt-tab-container class="page-tabbar-container" v-model="selected">
-                <mt-tab-container-item id="home">
-                    <mt-cell v-for="n in 100" :title="'首页 ' + n" />
-                </mt-tab-container-item>
-                <mt-tab-container-item id="gift">
-                  <keep-alive>
-                    <component :is="selected" v-if="!showDetails">
-                    </component>
-                  </keep-alive>
-                  <transition name="fade">
-                    <keep-alive>
-                      <router-view name="details"></router-view>
-                    </keep-alive>
-                  </transition>
-                  <transition name="fade">
-                    <keep-alive>
-                      <router-view name="category"></router-view>
-                    </keep-alive>
-                  </transition>
-                  <transition name="fade">
-                    <keep-alive>
-                      <router-view name="search"></router-view>
-                    </keep-alive>
-                  </transition>
-                  <transition name="fade">
-                    <keep-alive>
-                      <router-view name="comments"></router-view>
-                    </keep-alive>
-                  </transition>
-                  <transition name="fade">
-                    <keep-alive>
-                      <router-view name="tag"></router-view>
-                    </keep-alive>
-                  </transition>
-                </mt-tab-container-item>
-                <mt-tab-container-item id="add">
-                    <mt-cell v-for="n in 70" :title="'发布 ' + n" />
-                </mt-tab-container-item>
-                <mt-tab-container-item id="message">
-                    <mt-cell v-for="n in 70" :title="'消息 ' + n" />
-                </mt-tab-container-item>
-                <mt-tab-container-item id="me">
-                  <mt-cell v-for="n in 120" :title="'我的 ' + n" />
-                </mt-tab-container-item>
-            </mt-tab-container>
+              </div>
+              <div class="roseski-tabbar">
+                <a href="#" class="roseski-tabbar__item roseski-tabbar__item_on">
+                  <span>
+                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
+                      <use xlink:href="#icon-shouye"></use>
+                    </svg>
+                  </span>
+                  <p class="roseski-tabbar__label">
+                    首页
+                  </p>
+                </a>
+                <a href="#" class="roseski-tabbar__item">
+                  <span>
+                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
+                      <use xlink:href="#icon-liwu"></use>
+                    </svg>
+                  </span>
+                  <p class="roseski-tabbar__label">
+                    礼物
+                  </p>
+                </a>
+                <a href="#" class="roseski-tabbar__item">
+                  <span>
+                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
+                      <use xlink:href="#icon-fabu"></use>
+                    </svg>
+                  </span>
+                  <p class="roseski-tabbar__label">
+
+                  </p>
+                </a>
+                <a href="#" class="roseski-tabbar__item">
+                  <span>
+                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
+                      <use xlink:href="#icon-xiaoxi"></use>
+                    </svg>
+                  </span>
+                  <p class="roseski-tabbar__label">
+                    消息
+                  </p>
+                </a>
+                <a href="#" class="roseski-tabbar__item">
+                  <span>
+                    <svg class="icon roseski-tabbar__icon" aria-hidden="true">
+                      <use xlink:href="#icon-wode"></use>
+                    </svg>
+                  </span>
+                  <p class="roseski-tabbar__label">
+                    我的
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <mt-tabbar v-model="selected" v-if="!showDetails" class="web-font" fixed>
-            <mt-tab-item id="home">
-              <svg class="icon" slot="icon" aria-hidden="true">
-                <use xlink:href="#icon-shouye"></use>
-              </svg> 首页
-            </mt-tab-item>
-            <mt-tab-item id="gift">
-              <svg class="icon" slot="icon" aria-hidden="true">
-                <use xlink:href="#icon-liwu"></use>
-              </svg> 礼物
-            </mt-tab-item>
-            <mt-tab-item id="add">
-              <svg class="icon" slot="icon" aria-hidden="true">
-                <use xlink:href="#icon-fabu"></use>
-              </svg>
-            </mt-tab-item>
-            <mt-tab-item id="message">
-              <svg class="icon" slot="icon" aria-hidden="true">
-                <use xlink:href="#icon-xiaoxi"></use>
-              </svg> 消息
-            </mt-tab-item>
-            <mt-tab-item id="me">
-              <svg class="icon" slot="icon" aria-hidden="true">
-                <use xlink:href="#icon-wode"></use>
-              </svg>  我的
-            </mt-tab-item>
-        </mt-tabbar>
-
     </div>
+    <!-- <mt-tab-container class="page-tabbar-container" v-model="selected">
+      <mt-tab-container-item id="home">
+        <mt-cell v-for="n in 100" :title="'首页 ' + n" />
+      </mt-tab-container-item>
+      <mt-tab-container-item id="gift">
+        <keep-alive>
+          <component :is="selected" v-if="!showDetails">
+          </component>
+        </keep-alive>
+        <transition name="fade">
+          <keep-alive>
+            <router-view name="details"></router-view>
+          </keep-alive>
+        </transition>
+        <transition name="fade">
+          <keep-alive>
+            <router-view name="category"></router-view>
+          </keep-alive>
+        </transition>
+        <transition name="fade">
+          <keep-alive>
+            <router-view name="search"></router-view>
+          </keep-alive>
+        </transition>
+        <transition name="fade">
+          <keep-alive>
+            <router-view name="comments"></router-view>
+          </keep-alive>
+        </transition>
+        <transition name="fade">
+          <keep-alive>
+            <router-view name="tag"></router-view>
+          </keep-alive>
+        </transition>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="add">
+        <mt-cell v-for="n in 70" :title="'发布 ' + n" />
+      </mt-tab-container-item>
+      <mt-tab-container-item id="message">
+        <mt-cell v-for="n in 70" :title="'消息 ' + n" />
+      </mt-tab-container-item>
+      <mt-tab-container-item id="me">
+        <mt-cell v-for="n in 120" :title="'我的 ' + n" />
+      </mt-tab-container-item>
+    </mt-tab-container>
+
+
+  <mt-tabbar v-model="selected" v-if="!showDetails" class="web-font" fixed>
+    <mt-tab-item id="home">
+      <svg class="icon" slot="icon" aria-hidden="true">
+        <use xlink:href="#icon-shouye"></use>
+      </svg> 首页
+    </mt-tab-item>
+    <mt-tab-item id="gift">
+      <svg class="icon" slot="icon" aria-hidden="true">
+        <use xlink:href="#icon-liwu"></use>
+      </svg> 礼物
+    </mt-tab-item>
+    <mt-tab-item id="add">
+      <svg class="icon" slot="icon" aria-hidden="true">
+        <use xlink:href="#icon-fabu"></use>
+      </svg>
+    </mt-tab-item>
+    <mt-tab-item id="message">
+      <svg class="icon" slot="icon" aria-hidden="true">
+        <use xlink:href="#icon-xiaoxi"></use>
+      </svg> 消息
+    </mt-tab-item>
+    <mt-tab-item id="me">
+      <svg class="icon" slot="icon" aria-hidden="true">
+        <use xlink:href="#icon-wode"></use>
+      </svg>  我的
+    </mt-tab-item>
+  </mt-tabbar> -->
 </template>
 
 <script>
@@ -120,7 +178,7 @@
     };
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 
     .fade-enter-active,
     .fade-leave-active {
@@ -135,69 +193,104 @@
     * container
     **/
 
-    .page-tabbar {
-        overflow: hidden;
-        height: 100vh;
+    .container, .page {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+    .container {
+      overflow: hidden;
+    }
+    .page {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      z-index: 1;
+      background-color: #f8f8f8;
     }
 
-    .page-wrap {
-        overflow: auto;
-        height: 100%;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 96px;/*px*/
-        z-index: 1;
+    .page__bd {
+      height: 100%;
+    }
+    .roseski-tab {
+      position: relative;
+      height: 100%;
+    }
+    .roseski-tab__panel {
+      height: 100%;
+      box-sizing: border-box;
+      padding-bottom: 87px;/*px*/
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
 
     }
-
-    .mint-tabbar {
-      border-top: 1px solid #d9d9d9; /*no*/
-      background-color: #fff;
-
-    }
-
-    .mint-tabbar .mint-tab-item {
-      flex: 1;
-      text-align: center;
+    .roseski-tabbar {
       display: flex;
-      padding: 6px 0; /*px*/
-      flex-wrap: wrap;
-      height: 96px; /*px*/
-      text-decoration: none;
-      fill: #acacac;
-      flex-direction: column;
-      justify-content: center;
+      position: absolute;
+      z-index: 500;
+      bottom: 0;
+      width: 100%;
+      background-color: #f7f7f7;
+
     }
-
-
-    .mint-tabbar .mint-tab-item:nth-child(3) {
-      padding: 13px 0; /*px*/
+    .roseski-tabbar__item {
       display: block;
+      flex: 1;
+      padding: 6px 0 0;/*px*/
+      font-size: 0;
+      color: #6c6c6c;
+      fill: #acacac;
       text-align: center;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
-    .mint-tabbar .mint-tab-item:nth-child(3) .mint-tab-item-icon {
+    .roseski-tabbar__item > span {
+      display: inline-block;
+      position: relative;
+    }
+    .roseski-tabbar__icon {
+      display: inline-block;
+      width: 45px;/*px*/
+      height: 45px;/*px*/
+    }
+
+    .roseski-tabbar:before {
+      content: " ";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;/*no*/
+      border-top: 1px solid #C0BFC4;/*no*/
+      color: #C0BFC4;
+      transform: scaleY(0.5);
+    }
+    .roseski-tabbar__label {
+      text-align: center;
+      color: #6c6c6c;
+      font-size: 20px;/*px*/
+      line-height: 1.8;
+    }
+
+    .roseski-tabbar__item_on, .roseski-tabbar__item_on .roseski-tabbar__label {
+      fill: #ddb63f;
+      color: #ddb63f;
+    }
+
+    .roseski-tabbar .roseski-tabbar__item:nth-child(3) .roseski-tabbar__icon {
       width: 70px; /*px*/
       height: 70px; /*px*/
       text-align: center;
-      fill: #acacac;
     }
 
-    .mint-tab-item > .mint-tab-item-icon {
-      text-align: center;
-      width: 45px; /*px*/
-      height: 45px; /*px*/
-    }
-    .mint-tab-item > .mint-tab-item-label {
-      font-size: 22px; /*px*/
-      color: #6c6c6c;
+    .roseski-tabbar .roseski-tabbar__item:nth-child(3) {
+      padding-top: 0;
+      display: flex;
+      align-items: center;
     }
 
-    .mint-tabbar .mint-tab-item.is-selected {
-        background-color: #fff;
-        fill: #ddb63f;
-        text-decoration: none;
-    }
-    .mint-tabbar .mint-tab-item.is-selected .mint-tab-item-label {
-      color: #ddb63f;
+    .roseski-tabbar .roseski-tabbar__item:nth-child(3) > span {
+      flex: 1;
     }
 
 
