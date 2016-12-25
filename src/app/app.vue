@@ -5,7 +5,11 @@
             <div class="roseski-tab">
               <!-- panel -->
               <div class="roseski-tab__panel">
-                <router-view></router-view>
+                <transition name="fade">
+                  <keep-alive>
+                    <router-view></router-view>
+                  </keep-alive>
+                </transition>
               </div>
 
               <!-- tabbar -->
@@ -110,17 +114,17 @@
             }
         },
         watch: {
-            '$route' (to, from) {
-                this.showDetails =
-                to.path === '/details' ||
-                to.path === '/search' ||
-                to.path === '/category' ||
-                to.path === '/comments' ||
-                to.path === '/tag'
-
-                ? true : false
-
-            }
+            // '$route' (to, from) {
+            //     this.showDetails =
+            //     to.path === '/details' ||
+            //     to.path === '/search' ||
+            //     to.path === '/category' ||
+            //     to.path === '/comments' ||
+            //     to.path === '/tag'
+            //
+            //     ? true : false
+            //
+            // }
         },
         methods: {
           handleClick (name) {
@@ -191,7 +195,7 @@
     .roseski-tabbar__item {
       display: block;
       flex: 1;
-      padding: 5px 0 0;/*px*/
+      padding: 5px 0;/*px*/
       font-size: 0;
       color: #6c6c6c;
       fill: #acacac;
@@ -238,7 +242,7 @@
     }
 
     .roseski-tabbar .roseski-tabbar__item:nth-child(3) {
-      padding-top: 0;
+      //padding-top: 0;
       display: flex;
       align-items: center;
       justify-content: center;

@@ -21,13 +21,13 @@ export default new Router({
     { name: 'home' , path: '/home', component: Home },
     { name: 'me' , path: '/me', component: Me },
     { name: 'add' , path: '/add', component: Add },
-    { name: 'message' , path: '/message', component: Message },    
+    { name: 'message' , path: '/message', component: Message },
     { name: 'gift' , path: '/gift', component: Gift },
-    { name: 'details' , path: '/details', components: {'details':Details} },
-    { name: 'search' , path: '/search', components: {'search': Search} },
-    { name: 'category' , path: '/category', components: {'category': Category} },
-    { name: 'comments' , path: '/comments', components: {'comments': Comments} },
-    { name: 'tag' , path: '/tag', components: {'tag': Tag} },
+    { name: 'details' , path: '/details', component: Details },
+    { name: 'search' , path: '/search', component: Search },
+    { name: 'category' , path: '/category', component: Category },
+    { name: 'comments' , path: '/comments', component: Comments },
+    { name: 'tag' , path: '/tag', component: Tag },
     { path: '*', redirect: '/home' }
   ]
 })
