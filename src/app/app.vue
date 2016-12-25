@@ -12,8 +12,18 @@
                 </transition>
               </div>
 
+              <q-tabbar v-model="selected">
+                <q-tabbar-item v-for="item in tabbarItems"
+                  :id="item.id">
+                  <svg class="icon" aria-hidden="true" slot="icon">
+                    <use v-bind="{ 'xlink:href': '#icon-'+item.name }"></use>
+                  </svg>
+                  {{item.label}}
+                </q-tabbar-item>
+              </q-tabbar>
+
               <!-- tabbar -->
-              <div class="roseski-tabbar">
+              <!-- <div class="roseski-tabbar">
                 <a v-for="item in tabbarItems"
                   :class="{ 'roseski-tabbar__item_on': selected == item.id }"
                   @click="handleClick(item.id)"
@@ -27,59 +37,12 @@
                     {{item.label}}
                   </p>
                 </a>
-              </div>
+              </div> -->
+
             </div>
           </div>
         </div>
     </div>
-    <!-- <mt-tab-container class="page-tabbar-container" v-model="selected">
-      <mt-tab-container-item id="home">
-        <mt-cell v-for="n in 100" :title="'首页 ' + n" />
-      </mt-tab-container-item>
-      <mt-tab-container-item id="gift">
-        <keep-alive>
-          <component :is="selected" v-if="!showDetails">
-          </component>
-        </keep-alive>
-        <transition name="fade">
-          <keep-alive>
-            <router-view name="details"></router-view>
-          </keep-alive>
-        </transition>
-        <transition name="fade">
-          <keep-alive>
-            <router-view name="category"></router-view>
-          </keep-alive>
-        </transition>
-        <transition name="fade">
-          <keep-alive>
-            <router-view name="search"></router-view>
-          </keep-alive>
-        </transition>
-        <transition name="fade">
-          <keep-alive>
-            <router-view name="comments"></router-view>
-          </keep-alive>
-        </transition>
-        <transition name="fade">
-          <keep-alive>
-            <router-view name="tag"></router-view>
-          </keep-alive>
-        </transition>
-      </mt-tab-container-item>
-      <mt-tab-container-item id="add">
-        <mt-cell v-for="n in 70" :title="'发布 ' + n" />
-      </mt-tab-container-item>
-      <mt-tab-container-item id="message">
-        <mt-cell v-for="n in 70" :title="'消息 ' + n" />
-      </mt-tab-container-item>
-      <mt-tab-container-item id="me">
-        <mt-cell v-for="n in 120" :title="'我的 ' + n" />
-      </mt-tab-container-item>
-    </mt-tab-container>
-
-
--->
 </template>
 
 <script>
@@ -89,16 +52,19 @@
     import '../assets/fonts/iconfont.js?strict=false'
     import '../assets/fonts/iconfont.css'
     import '../assets/fonts/webfont.css'
-    import Gift from '../gift/gift.vue'
     import '../assets/css/style.css'
     import '../assets/css/box.css'
+    import qTabbar from '../components/qtabbar.vue'
+    import qTabbarItem from '../components/qtabbaritem.vue'
+
 
     Vue.use(Mint)
 
     export default {
         name: 'romanski',
         components: {
-            Gift
+          qTabbar,
+          qTabbarItem
         },
         data() {
             return {
@@ -114,17 +80,9 @@
             }
         },
         watch: {
-            // '$route' (to, from) {
-            //     this.showDetails =
-            //     to.path === '/details' ||
-            //     to.path === '/search' ||
-            //     to.path === '/category' ||
-            //     to.path === '/comments' ||
-            //     to.path === '/tag'
-            //
-            //     ? true : false
-            //
-            // }
+          'selected' () {
+            this.$router.push({path:this.selected})
+          }
         },
         methods: {
           handleClick (name) {
@@ -183,72 +141,20 @@
       z-index: 1;
 
     }
-    .roseski-tabbar {
-      display: flex;
-      position: absolute;
-      z-index: 500;
-      bottom: 0;
-      width: 100%;
-      background-color: #f7f7f7;
-
-    }
-    .roseski-tabbar__item {
-      display: block;
-      flex: 1;
-      padding: 5px 0;/*px*/
-      font-size: 0;
-      color: #6c6c6c;
-      fill: #acacac;
-      text-align: center;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-    .roseski-tabbar__item > span {
-      display: inline-block;
-      position: relative;
-    }
-    .roseski-tabbar__icon {
-      display: inline-block;
-      width: 45px;/*px*/
-      height: 45px;/*px*/
-    }
-
-    .roseski-tabbar:before {
-      content: " ";
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      height: 1px;/*no*/
-      border-top: 1px solid #C0BFC4;/*no*/
-      color: #C0BFC4;
-      transform: scaleY(0.5);
-    }
-    .roseski-tabbar__label {
-      text-align: center;
-      color: #6c6c6c;
-      font-size: 20px;/*px*/
-      line-height: 1.8;
-    }
-
-    .roseski-tabbar__item_on, .roseski-tabbar__item_on .roseski-tabbar__label {
-      fill: #ddb63f;
-      color: #ddb63f;
-    }
-
-    .roseski-tabbar .roseski-tabbar__item:nth-child(3) .roseski-tabbar__icon {
+    
+    .q-tabbar .q-tabbar__item:nth-child(3) .q-tabbar__icon> svg {
       width: 70px; /*px*/
       height: 70px; /*px*/
       text-align: center;
     }
 
-    .roseski-tabbar .roseski-tabbar__item:nth-child(3) {
-      //padding-top: 0;
+    .q-tabbar .q-tabbar__item:nth-child(3) {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .roseski-tabbar .roseski-tabbar__item:nth-child(3) > span {
+    .q-tabbar .q-tabbar__item:nth-child(3) > .q-tabbar__icon {
       flex: 1;
     }
 
