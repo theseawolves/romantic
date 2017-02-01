@@ -60,21 +60,81 @@ export default {
     this.$http.get(this.url + this.tagUrl).then((response) => {
         let data = JSON.parse(response.data)
         let r = []
-        data.forEach(item => {
+        data.data.forEach(item => {
           r.push(item.tag)
         })
-        this.giftTags = r.chunk(6)
+        this.giftTags = r.chunk(5)
         //this.giftTags = r
 
     }, (response) => {
         console.log('error')
         console.log(response)
+        let data = {
+              operationStatus: true,
+              infoCode: "INFO_00004",
+              msg: "成功获得首页标签信息",
+              data: [
+                {
+                  tag_id: "8",
+                  priority: "6",
+                  tag_name: "追求",
+                  tag_url: "http://www.bing.com/"
+                },
+                {
+                  tag_id: "5",
+                  priority: "5",
+                  tag_name: "和好",
+                  tag_url: "http://www.jd.com/"
+                },
+                {
+                  tag_id: "6",
+                  priority: "4",
+                  tag_name: "求婚",
+                  tag_url: "http://www.taobao.com/"
+                },
+                {
+                  tag_id: "3",
+                  priority: "3",
+                  tag_name: "热恋",
+                  tag_url: "http://www.amazon.com/"
+                },
+                {
+                  tag_id: "1",
+                  priority: "2",
+                  tag_name: "暗恋",
+                  tag_url: "http://www.qq.com/"
+                },
+                {
+                  tag_id: "2",
+                  priority: "1",
+                  tag_name: "表白",
+                  tag_url: "http://www.baidu.com/"
+                },
+                {
+                  tag_id: "2",
+                  priority: "1",
+                  tag_name: "表白1",
+                  tag_url: "http://www.baidu.com/"
+                },
+                {
+                  tag_id: "2",
+                  priority: "1",
+                  tag_name: "表白2",
+                  tag_url: "http://www.baidu.com/"
+                }
+                ]
+              }
+              let r = []
+              data.data.forEach(item => {
+                r.push(item.tag_name)
+              })
+              this.giftTags = r.chunk(5)
     })
   }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .gift-tag {
   text-align: center;
   height: 66px;/*px*/
