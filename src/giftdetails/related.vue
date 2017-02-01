@@ -2,65 +2,114 @@
   <div class="gift-related">
     <p class="vux-divider">更多浪漫</p>
     <div class="related-wrap">
-      <div class="item">
+      <div class="item" v-for="item in commodityRelated">
         <div class="related-link">
           <router-link :to="{ path:'/details'}" exact>
-            <div class="related-link-body" :style="{'background-image':'url(/static/assets/images/340x342.png)'}">
+            <div class="related-link-body"
+            :style="{'background-image':'url('+ item.image+')'}">
             </div>
           </router-link>
           <div class="related-link-info">
-            <div class="related-link-title" v-text="'粉色满天星花束'"></div>
-            <div class="related-link-price" v-text="'￥198'"></div>
+            <div class="related-link-title" v-text="item.name"></div>
+            <div class="related-link-price" v-text="'￥'+item.price"></div>
           </div>
         </div>
-        <div class="related-link">
-          <router-link :to="{ path:'/details'}" exact>
-            <div class="related-link-body" :style="{'background-image':'url(/static/assets/images/340x342.png)'}">
-            </div>
-          </router-link>
-          <div class="related-link-info">
-            <div class="related-link-title" v-text="'粉色满天星花束'"></div>
-            <div class="related-link-price" v-text="'￥198'"></div>
-          </div>
-        </div>
+      </div>
 
-      </div>
-      <div class="item">
-        <div class="related-link">
-          <router-link :to="{ path:'/details'}" exact>
-            <div class="related-link-body" :style="{'background-image':'url(/static/assets/images/340x342.png)'}">
-            </div>
-          </router-link>
-          <div class="related-link-info">
-            <div class="related-link-title" v-text="'粉色满天星花束'"></div>
-            <div class="related-link-price" v-text="'￥198'"></div>
-          </div>
-        </div>
-        <div class="related-link">
-          <router-link :to="{ path:'/details'}" exact>
-            <div class="related-link-body" :style="{'background-image':'url(/static/assets/images/340x342.png)'}">
-            </div>
-          </router-link>
-          <div class="related-link-info">
-            <div class="related-link-title" v-text="'粉色满天星花束'"></div>
-            <div class="related-link-price" v-text="'￥198'"></div>
-          </div>
-        </div>
-      </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css'
+
 export default {
+  name: 'giftrelated',
+  data () {
+    return {
+      baseUrl: 'http://www.roseski.com/bg/index.php?',
+      introUrl: '/api/recommendCommodities/',
+      commodityId: 1,
+      page: 1,
+      commodityRelated: []
+    }
+  },
+  computed: {
+    url () {
+      return window.location.href.indexOf('localhost') > -1 || window.location.href.indexOf('natapp.cc') > -1 ? '' : this.baseUrl
+    }
+  },
+  mounted () {
+    this.$http.get(this.url + this.introUrl + this.commodityId+'/'+ this.page).then((response) => {
+        let data = JSON.parse(response.data)
+        this.commodityRelated = data.data
+
+    }, (response) => {
+        console.log('error')
+        console.log(response)
+        let data = {
+              operationStatus: true,
+              infoCode: "INFO_00005",
+              msg: "成功获得推荐商品信息",
+              data: [
+                      {
+                        id: "5",
+                        name: "金银牡丹马克杯1",
+                        price: "32",
+                        sold: "0",
+                        image: null
+                      },
+                      {
+                        id: "5",
+                        name: "金银牡丹马克杯2",
+                        price: "28",
+                        sold: "0",
+                        image: null
+                      },
+                      {
+                        id: "5",
+                        name: "金银牡丹马克杯3",
+                        price: "112",
+                        sold: "0",
+                        image: null
+                      },
+                      {
+                        id: "5",
+                        name: "金银牡丹马克杯",
+                        price: "38",
+                        sold: "0",
+                        image: null
+                      },
+                      {
+                        id: "5",
+                        name: "金银牡丹马克杯3",
+                        price: "112",
+                        sold: "0",
+                        image: null
+                      },
+                      {
+                        id: "5",
+                        name: "金银牡丹马克杯",
+                        price: "38",
+                        sold: "0",
+                        image: null
+                      },
+                  ]
+              }
+        this.commodityRelated = data.data
+    })
+  }
+
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .gift-related {
   margin-top: 10px;
   background: #fff;
-  height: 940px;
 }
 .gift-related .vux-divider {
   padding-top: 34px;
@@ -69,32 +118,27 @@ export default {
 }
 
 .gift-related .related-wrap {
-  padding: 0 23px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+.gift-related .item {
+  border: 1px solid #4b4a46;
+  margin-bottom: 18px;
 }
 .gift-related .item .related-link {
   width: 340px;
-  float: left;
-  border: 1px solid #4b4a46;
-  margin-bottom: 18px;
+}
 
-}
-.gift-related .item .related-link:last-child {
-  float: right;
-}
 .gift-related .related-link-body {
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
   background-color: #eee;
-  overflow: hidden;
 }
 
 
 .gift-related .related-link-body {
   height: 340px;
   width: 340px;
-  margin: 0 auto;
-
 }
 
 .gift-related .related-link-info {

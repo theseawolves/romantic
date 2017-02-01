@@ -1,14 +1,17 @@
 <template lang="html">
   <div class="gift-intro">
     <template>
-      <mt-swipe :auto="0">
-        <mt-swipe-item v-for = "item in commodityDetail.img">
+
+      <swiper :options="swiperOption">
+        <swiper-slide v-for = "item in commodityDetail.img">
           <img :src="item" alt="" />
-        </mt-swipe-item>
-      </mt-swipe>
+        </swiper-slide>
+        <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
+
       <div class="sold">
         <span class="sold-info">已售</span>
-        <span class="sold-count">{{commodityDetail.sales}}</span>
+        <span class="sold-count">{{commodityDetail.sold}}</span>
       </div>
       <h1 class="title">{{commodityDetail.title}}</h1>
       <p class="desc">
@@ -30,17 +33,26 @@
           </svg>
           <span class="social-title">送给TA</span>
         </div>
+        <div class="social-item line">
+
+        </div>
         <div class="social-item social-xihuan">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-xihuan"></use>
           </svg>
           <span class="social-title">收藏</span>
         </div>
+        <div class="social-item line">
+
+        </div>
         <div class="social-item social-jiarugouwuche">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-jiarugouwuche"></use>
           </svg>
           <span class="social-title">加入购物车</span>
+        </div>
+        <div class="social-item line">
+
         </div>
         <div class="social-item social-shop">
           <span class="social-title">去天猫购买</span>
@@ -56,6 +68,8 @@
 import Vue from 'vue'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import { swiper, swiperSlide, swiperPlugins } from 'vue-awesome-swiper'
+
 export default {
   name: 'giftintro',
   data () {
@@ -63,7 +77,11 @@ export default {
       baseUrl: 'http://www.roseski.com/bg/index.php?',
       introUrl: '/api/commodityDetail/',
       commodityId: 1,
-      commodityDetail: {}
+      commodityDetail: {},
+      swiperOption: {
+        pagination: '.swiper-pagination',
+        paginationClickable: true
+      }
     }
   },
   computed: {
@@ -74,44 +92,69 @@ export default {
   mounted () {
     this.$http.get(this.url + this.introUrl + this.commodityId).then((response) => {
         let data = JSON.parse(response.data)
-        this.commodityDetail = data
+        this.commodityDetail = data.data
 
     }, (response) => {
         console.log('error')
         console.log(response)
+        let data = {
+                operationStatus: true,
+                infoCode: "INFO_00002",
+                msg: "成功获得商品的详情信息",
+                data: {
+                  id: "1",
+                  title: "彩色绒球流苏头绳手链",
+                  desc: "彩色绒球流苏头绳手链彩色绒球流苏头绳手链彩色绒球流苏头绳手链彩色绒球流苏头绳手链",
+                  price: "28",
+                  originprice: "28",
+                  sold: "100",
+                  stock: "0",
+                  selfrun: "1",
+                  exurl: "",
+                  status: 1,
+                  img: [
+                      null,
+                      null,
+                      null
+                    ]
+                  }
+                }
+        this.commodityDetail = data.data
     })
+  },
+  components: {
+    swiper,
+    swiperSlide
   }
 
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
 .gift-intro {
   background: #fff;
 }
-.gift-intro .mint-swipe {
+.gift-intro .swiper-container img {
+  width: 100%;
   height: 750px;
-  color: #fff;
-  font-size: 30px;
-  text-align: center;
-  margin-bottom: 20px;
+  display: inline-block;
+  background-color: #ccc;
 }
-.gift-intro .mint-swipe-item {
-  line-height: 750px;
-}
-.gift-intro .mint-swipe-indicator {
+.gift-intro .swiper-pagination-bullet {
   width: 20px;
   height: 20px;
 }
-.gift-intro .mint-swipe-indicator.is-active {
+.gift-intro .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: #ddb63f;
-  opacity: 1;
 }
+
 .gift-intro .sold {
   float: right;
   color: #918d84;
   font-size: 15px;/*px*/
   margin-right: 26px;
+  font-size: 20px;/*px*/
+
 }
 .gift-intro h1.title {
   margin: 35px auto 18px 22px;
@@ -120,16 +163,16 @@ export default {
 }
 .gift-intro p.desc {
   margin-left: 22px;
-  font-size: 20px;
+  font-size: 24px;/*px*/
   color: #4b4a46;
   margin-bottom: 22px;
 }
 .gift-intro .price {
   font-size: 18px;/*px*/
-  margin-bottom: 22px;
 }
 .gift-intro .discount-price {
   color: #f66375;
+  font-size: 24px;/*px*/
   padding-left: 22px;
   padding-right: 10px;
 }
@@ -140,7 +183,7 @@ export default {
 }
 .gift-intro .express {
   margin-left: 22px;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
   color: #4b4a46;
   font-size: 20px;/*px*/
 }
@@ -160,19 +203,22 @@ export default {
 .gift-intro .social-item {
   flex: 1;
 }
+.gift-intro .social-item.line {
+  flex-grow: 0;
+  height: 30px;/*px*/
+  width: 2px;/*px*/
+  flex-basis: auto;
+  border-left: 1px solid #ccc;
+  text-align: center;
+
+}
+
 .gift-intro .icon {
   vertical-align: middle;
 }
-.gift-intro .social-title {
-  padding-top: 5px;
-  padding-right: 42px;
-  padding-bottom: 5px;
-  border-right: 1px solid #4b4a46;
-  text-align: center;
-}
+
 .gift-intro .social-shop .social-title  {
-  border-right: none;
-  padding-right: 0;
+  padding:5px 20px;
   background-color: #FF4200;
   border-radius: 5px;
   color: #fff;
