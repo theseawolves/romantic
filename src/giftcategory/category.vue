@@ -1,13 +1,27 @@
 <template lang="html">
 <div class="">
-  礼物分类页面
-  <pre>{{ this.$route.query | json }}</pre>
+  <romanski-header></romanski-header>
+  <romanski-sort></romanski-sort>
+  <romanski-list></romanski-list>
+  <romanski-list2></romanski-list2>
+
 </div>
 </template>
 
 <script>
+import RomanskiHeader from './header.vue'
+import RomanskiSort from './sort.vue'
+import RomanskiList from './list.vue'
+import RomanskiList2 from './list2.vue'
+
 export default {
-  name: 'giftCategory'
+  name: 'giftCategory',
+  components: {
+    RomanskiHeader,
+    RomanskiSort,
+    RomanskiList,
+    RomanskiList2
+  }
 }
 </script>
 

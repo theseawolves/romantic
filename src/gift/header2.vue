@@ -1,11 +1,14 @@
 <template lang="html">
   <q-header>
     <span slot="center">礼物</span>
-    <router-link :to="{ path:'/search'}" exact slot="right">
+    <div class="right">
+
+    </div>
+    <!-- <router-link :to="{ path:'/search'}" exact slot="right">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-fanhui"></use>
       </svg>
-    </router-link>
+    </router-link> -->
   </q-header>
 </template>
 
