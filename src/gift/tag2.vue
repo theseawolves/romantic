@@ -61,7 +61,7 @@ export default {
         let data = JSON.parse(response.data)
         let r = []
         data.data.forEach(item => {
-          r.push(item.tag)
+          r.push(item.tag_name)
         })
         this.giftTags = r.chunk(5)
         //this.giftTags = r

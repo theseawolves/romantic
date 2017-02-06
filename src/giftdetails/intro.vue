@@ -222,5 +222,10 @@ export default {
   background-color: #FF4200;
   border-radius: 5px;
   color: #fff;
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+
 }
 </style>

@@ -7,13 +7,16 @@
         </svg>
       </router-link>
       <div class="center">
-        礼物
+        礼物详情
       </div>
-      <router-link :to = "{ path: '/share'}" class="right">
+      <div class="right">
+
+      </div>
+      <!-- <router-link :to = "{ path: '/share'}" class="right">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-fenxiang"></use>
         </svg>
-      </router-link>
+      </router-link> -->
     </header>
 
   </div>

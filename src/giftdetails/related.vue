@@ -124,7 +124,7 @@ export default {
 
 }
 .gift-related .item {
-  border: 1px solid #4b4a46;
+  border: 1px solid #4b4a46;/*px*/
   margin-bottom: 18px;
 }
 .gift-related .item .related-link {
