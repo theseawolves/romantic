@@ -110,7 +110,7 @@ export default {
   font-size: 28px;/*px*/
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eee;/*px*/
 }
 .sort-wrap__item {
   flex-grow: 1;
@@ -149,12 +149,12 @@ export default {
   width: 624px;
 }
 .sort-wrap__item.sort-wrap__select > .sub > li {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;/*px*/
   padding: 22px 32px;
   font-size: 24px;/*px*/
 }
 .sort-wrap__item.sort-wrap__sort > .sub > li {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;/*px*/
   padding: 22px 32px;
   font-size: 24px;/*px*/
 }

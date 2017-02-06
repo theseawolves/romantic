@@ -13,7 +13,7 @@
               </div>
 
               <q-tabbar v-model="selected">
-                <q-tabbar-item v-for="item in tabbarItems"
+                <q-tabbar-item v-for="item in tabbarItems" :class="{hide:item.label != ''}"
                   :id="item.id">
                   <svg class="icon" aria-hidden="true" slot="icon">
                     <use v-bind="{ 'xlink:href': '#icon-'+item.name }"></use>
@@ -81,13 +81,14 @@
         },
         watch: {
           'selected' () {
-            this.$router.push({path:this.selected})
+            //this.$router.push({path:this.selected})
+            window.location.href = 'http://www.baidu.com'
           }
         },
         methods: {
           handleClick (name) {
             this.selected = name
-            this.$router.push({path:name})
+            //this.$router.push({path:name})
           }
         }
     };
@@ -141,7 +142,7 @@
       z-index: 1;
 
     }
-    
+
     .q-tabbar .q-tabbar__item:nth-child(3) .q-tabbar__icon> svg {
       width: 70px; /*px*/
       height: 70px; /*px*/
@@ -156,6 +157,9 @@
 
     .q-tabbar .q-tabbar__item:nth-child(3) > .q-tabbar__icon {
       flex: 1;
+    }
+    .q-tabbar .q-tabbar__item.hide {
+      display: none;
     }
 
 

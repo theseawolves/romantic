@@ -23,7 +23,11 @@ export default new Router({
   routes: [
     { name: 'home' , path: '/home', component: Home },
     { name: 'me' , path: '/me', component: Me },
-    { name: 'add' , path: '/add', component: Add },
+    { name: 'add' , path: '/add',
+      beforeEnter: (to, from, next) => {
+        window.location.href = 'http://www.baidu.com'
+      }
+    },
     { name: 'message' , path: '/message', component: Message },
     { name: 'gift' , path: '/gift', component: Gift },
     { name: 'details' , path: '/details', component: Details },
