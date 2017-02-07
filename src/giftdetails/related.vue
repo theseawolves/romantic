@@ -4,7 +4,7 @@
     <div class="related-wrap">
       <div class="item" v-for="item in commodityRelated">
         <div class="related-link">
-          <router-link :to="{ path:'/details'}" exact>
+          <router-link :to="{ path:'/details?'}" exact>
             <div class="related-link-body"
             :style="{'background-image':'url('+ item.image+')'}">
             </div>
@@ -124,7 +124,7 @@ export default {
 
 }
 .gift-related .item {
-  border: 1px solid #4b4a46;/*px*/
+  border: 1px solid #ccc;/*no*/
   margin-bottom: 18px;
 }
 .gift-related .item .related-link {

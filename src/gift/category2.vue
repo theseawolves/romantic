@@ -213,4 +213,7 @@ export default {
   width: 100%;
   height: 100%;
 }
+.gift-category2 .swiper-container {
+  height: 100%;
+}
 </style>

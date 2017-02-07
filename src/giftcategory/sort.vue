@@ -28,7 +28,7 @@
     </ul>
   </div>
   <span class="sort-wrap__item sort-wrap__line"></span>
-  <div class="sort-wrap__item sort-wrap__style">
+  <div class="sort-wrap__item sort-wrap__style" @click="isSortShow = false,isSelectShow =false">
     <router-link to="/category/list2">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shangxiapailie"></use>
@@ -36,7 +36,7 @@
     </router-link>
   </div>
   <span class="sort-wrap__item sort-wrap__line"></span>
-  <div class="sort-wrap__item sort-wrap__style">
+  <div class="sort-wrap__item sort-wrap__style" @click="isSortShow = false,isSelectShow =false">
     <router-link to="/category/list">
     <svg class="icon" aria-hidden="true">
       <use xlink:href="#icon-juzhenpailie"></use>
@@ -110,7 +110,7 @@ export default {
   font-size: 28px;/*px*/
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid #eee;/*px*/
+  border-bottom: 1px solid #ccc;/*no*/
 }
 .sort-wrap__item {
   flex-grow: 1;
@@ -119,9 +119,9 @@ export default {
   display: inline-block;
   flex-grow: 0;
   flex-basis: auto;
-  width: 2px;
+  width: 1px;/*no*/
   height: 48px;
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #ccc;/*no*/
 }
 .sort-wrap__item.sort-wrap__select {
   flex-grow: 3;
@@ -134,13 +134,7 @@ export default {
   text-align: justify;
   align-self: stretch;
 }
-/*.sort-wrap__item.sort-wrap__select .text {
-  //padding-left: 30px;
-}
-.sort-wrap__item.sort-wrap__select .icon {
-  //position: absolute;
-  //right: 36px;
-}*/
+
 .sort-wrap__item.sort-wrap__select > .sub {
   position: absolute;
   left: 0;
@@ -149,26 +143,19 @@ export default {
   width: 624px;
 }
 .sort-wrap__item.sort-wrap__select > .sub > li {
-  border-bottom: 1px solid #ccc;/*px*/
+  border-bottom: 1px solid #ccc;/*no*/
   padding: 22px 32px;
   font-size: 24px;/*px*/
 }
 .sort-wrap__item.sort-wrap__sort > .sub > li {
-  border-bottom: 1px solid #ccc;/*px*/
-  padding: 22px 32px;
+  border-bottom: 1px solid #ccc;/*no*/
+  padding: 22px 12px;
   font-size: 24px;/*px*/
 }
 .sort-wrap__item.sort-wrap__select .sub > li > .num {
   float: right;
 }
 
-/*.sort-wrap__item.sort-wrap__style {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-
-}*/
 .sort-wrap__item.sort-wrap__style > a {
   display: flex;
   align-items: center;

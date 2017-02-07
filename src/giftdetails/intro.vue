@@ -25,7 +25,7 @@
         <span>快递：</span>
         <span class="express-freight">免运费</span>
       </div>
-      <hr>
+
       <div class="social">
         <div class="social-item social-ta">
           <svg class="icon" aria-hidden="true">
@@ -144,8 +144,12 @@ export default {
   width: 20px;
   height: 20px;
 }
-.gift-intro .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background: #ddb63f;
+.swiper-pagination-bullet-active {
+  background-color: #ddb63f;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #ddb63f;
 }
 
 .gift-intro .sold {
@@ -164,7 +168,7 @@ export default {
 .gift-intro p.desc {
   margin-left: 22px;
   font-size: 24px;/*px*/
-  color: #4b4a46;
+  color: #ccc;
   margin-bottom: 22px;
 }
 .gift-intro .price {
@@ -183,9 +187,10 @@ export default {
 }
 .gift-intro .express {
   margin-left: 22px;
-  margin-bottom: 18px;
-  color: #4b4a46;
+  padding-bottom: 18px;
+  color: #ccc;
   font-size: 20px;/*px*/
+  border-bottom: 1px solid #ccc;/*no*/
 }
 .gift-intro svg {
   width: 35px;
@@ -196,9 +201,10 @@ export default {
   text-align: center;
   height: 60px;
   font-size: 20px;/*px*/
-  color: #4b4a46;
+  color: #ccc;
   justify-content: center;
   align-items: center;
+  //background-color: blue;
 }
 .gift-intro .social-item {
   flex: 1;
@@ -208,7 +214,7 @@ export default {
   height: 30px;/*px*/
   width: 2px;/*px*/
   flex-basis: auto;
-  border-left: 1px solid #ccc;
+  border-left: 1px solid #ccc;/*no*/
   text-align: center;
 
 }
@@ -216,16 +222,18 @@ export default {
 .gift-intro .icon {
   vertical-align: middle;
 }
+.gift-intro .social-shop {
 
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+}
 .gift-intro .social-shop .social-title  {
   padding:5px 20px;
   background-color: #FF4200;
   border-radius: 5px;
   color: #fff;
-  display: flex;
-  align-self: stretch;
-  align-items: center;
-  justify-content: center;
 
 }
 </style>
