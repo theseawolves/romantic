@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="gift-tag">
-    <swiper :options="swiperOption">
+    <swiper >
       <swiper-slide v-for="tag in giftTags" >
         <q-tab>
           <q-tab-item v-for="item in tag">
@@ -11,6 +11,7 @@
           </q-tab-item>
         </q-tab>
       </swiper-slide>
+
     </swiper>
   </div>
 </template>
@@ -37,10 +38,10 @@ export default {
       //giftTags: [['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚'], ['#结婚','#红颜知己', '#蓝颜知己', '#办公恋情', '#第三者']],
       baseUrl: 'http://www.roseski.com/bg/index.php?',
       tagUrl: '/api/topPageTags',
-      swiperOption: {
-        pagination: '.swiper-pagination',
-        paginationClickable: true
-      }
+      // swiperOption: {
+      //   pagination: '.swiper-pagination1',
+      //   paginationClickable: true
+      // }
 
     }
   },
