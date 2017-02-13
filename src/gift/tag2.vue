@@ -1,17 +1,12 @@
 <template lang="html">
   <div class="gift-tag">
-    <swiper >
+    <swiper :options="swiperOption1">
       <swiper-slide v-for="tag in giftTags" >
-        <q-tab>
-          <q-tab-item v-for="item in tag">
-            <router-link  slot="title"
-              :to="{ path:'/tag', query:{ name: item} }" exact>
-              <span class="tab-title">{{item}}</span>
-            </router-link>
-          </q-tab-item>
-        </q-tab>
+        <router-link v-for="item in tag"
+          :to="{ path:'/tag', query:{ name: item} }">
+          {{item}}
+        </router-link>
       </swiper-slide>
-
     </swiper>
   </div>
 </template>
@@ -20,17 +15,18 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import { swiper, swiperSlide, swiperPlugins } from 'vue-awesome-swiper'
-import qTab from '../components/qtab.vue'
-import qTabItem from '../components/qtabitem.vue'
+// import qTab from '../components/qtab.vue'
+// import qTabItem from '../components/qtabitem.vue'
 
 
 Vue.use(VueResource)
 export default {
+  name: 'giftTags',
   components: {
     swiper,
     swiperSlide,
-    qTab,
-    qTabItem
+    // qTab,
+    // qTabItem
   },
   data () {
     return {
@@ -38,10 +34,9 @@ export default {
       //giftTags: [['#暗恋', '#表白', '#热恋', '#小矛盾', '#和好', '#求婚'], ['#结婚','#红颜知己', '#蓝颜知己', '#办公恋情', '#第三者']],
       baseUrl: 'http://www.roseski.com/bg/index.php?',
       tagUrl: '/api/topPageTags',
-      // swiperOption: {
-      //   pagination: '.swiper-pagination1',
-      //   paginationClickable: true
-      // }
+      swiperOption1: {
+        autoplay: 0
+      }
 
     }
   },
@@ -141,24 +136,23 @@ export default {
 
 <style lang="css" scoped>
 .gift-tag {
-  text-align: center;
   height: 66px;/*px*/
-  overflow: hidden;
-  background-color: #fff;
+  background-color: white;
   margin-top: 10px;
 }
-.gift-tag .q-tab {
-  height: 66px;
-  line-height: 66px;
+.gift-tag .swiper-container {
+  height: 100%;
 }
-
-.gift-tag .q-tab-item a ,.gift-tag .q-tab-item a .tab-title  {
-  font-size: 22px;/*px*/
+.gift-tag .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.gift-tag .swiper-slide > a {
   color: #ddb63f;
-  text-align: center;
-  display: block;
-  height: 66px;/*px*/
-  line-height: 66px; /*px*/
+  background-color: white;
+  font-size: 22px;/*px*/
+  line-height: 66px;
 }
 
 </style>

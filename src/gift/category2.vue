@@ -20,6 +20,7 @@ import Vue from 'vue'
 import { swiper, swiperSlide, swiperPlugins } from 'vue-awesome-swiper'
 
 export default {
+  name: 'category',
   data: function () {
     return {
       swiperOption: {
@@ -86,7 +87,7 @@ export default {
   color: #000;
 }*/
 .gift-category2 {
-  //padding-bottom: 70px;
+  background-color: white;
 }
 .gift-category2 .swiper-slide {
   display: flex;

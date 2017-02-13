@@ -2,9 +2,9 @@
   <div class="">
     <romanski-header2></romanski-header2>
     <romanski-category2></romanski-category2>
-    <!-- <romanski-tag2></romanski-tag2>
+    <romanski-tag2></romanski-tag2>
     <romanski-issue></romanski-issue>
-    <divider></divider> -->
+
 
   </div>
 </template>

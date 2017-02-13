@@ -92,6 +92,8 @@
         methods: {
             loadMore() {
                 this.loading = true;
+                this.page++
+
                 this.fetchIssues()
                     // setTimeout(() => {
                     //   let last = this.list[this.list.length - 1];
@@ -170,9 +172,13 @@
                                 item.tinyList = r
                             })
 
-                            for (let i = 0; i < issues.data.length; i++) {
-                              this.list.push(issues.data[i]);
+                            if( this.page < 10 ) {
+                              for (let i = 0; i < issues.data.length; i++) {
+                                this.list.push(issues.data[i]);
+                              }
+
                             }
+
 
                   // this.list.push(issues.data)
                   this.loading = false
@@ -220,11 +226,14 @@
     }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
     .gift-issue {
         margin-top: 10px;
         background: #fff;
         padding: 0 16px;
+    }
+    .gift-issue:last-child {
+      margin-bottom: 50px;
     }
 
     .vux-divider {
